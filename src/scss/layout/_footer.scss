@@ -1,0 +1,37 @@
+@use '../custom' as *;
+
+.no-webp .footer {
+    background-image: url(../img/textura.jpg);
+}
+
+.webp .footer {
+    background-image: url(../img/textura.webp);
+}
+
+.footer {
+    background-color: $primary;
+    background-size: cover;
+    background-blend-mode: multiply;
+
+    h2, h3, p {
+        color: $dark;
+    }
+
+    h2 {
+        font-size: 4.5rem;
+        font-weight: bold;
+        transform: rotate(-90deg);
+        line-height: .8;
+
+        @include media-breakpoint-up(md) {
+            transform: unset;
+            font-size: 6rem;
+        }
+
+        span {
+            display: block;
+            margin-left: 2.5rem;
+            font-weight: 900;
+        }
+    }
+}

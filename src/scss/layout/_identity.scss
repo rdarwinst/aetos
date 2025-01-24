@@ -1,0 +1,59 @@
+@use '../custom' as *;
+
+.no-webp .identity {
+    background-image: url(../img/textura.jpg);
+}
+
+.webp .identity {
+    background-image: url(../img/textura.webp);
+}
+
+.identity {
+    background-color: $white;
+    background-size: cover;
+    background-blend-mode: multiply;
+
+    h2 {
+        text-align: center;
+        font-weight: 700;
+        color: $light;    
+        font-size: 6rem;    
+        text-transform: uppercase;
+
+        @include media-breakpoint-up(lg) {
+            font-size: 10rem;    
+            line-height: 1;
+        }
+
+        span {
+            display: block;
+            color: transparent;
+            -webkit-text-stroke: 1px $light;
+            text-transform: capitalize;
+
+        }
+    }
+
+    p {
+        color: $light;
+
+        span {
+            color: $primary;
+        }
+    }
+
+    .col-md-3 {
+        padding: 1rem 1rem 1rem 1rem;
+        background: $dark;
+    }
+
+    img {
+        width: 100%;
+
+        @include media-breakpoint-up(md) {
+            height: 40rem;
+            object-fit: cover;
+        }
+    }
+
+}

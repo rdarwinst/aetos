@@ -1,0 +1,46 @@
+@use '../custom' as *;
+
+.no-webp .team {
+    background-image: url(../img/textura.jpg);
+}
+.webp .team {
+    background-image: url(../img/textura.webp);
+}
+
+.team {
+    background-color: $primary;
+    background-size: cover;
+    background-blend-mode: multiply;
+
+    .frase {
+        text-align: center; 
+        font-size: 2.2rem;
+        font-weight: 300;
+        color: $white;
+        max-width: 60rem;
+        margin-inline: auto;
+
+        span {
+            color: $dark;
+        }
+    }
+
+
+    h2 {
+        text-align: center;
+        font-weight: 700;
+        font-size: 6rem;
+        color: $dark;
+        line-height: .8;
+
+        @include media-breakpoint-up(lg) {
+            font-size: 10rem;
+        }
+
+        span {
+            color: $white;
+            text-transform: uppercase;
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,39 @@
+@use '../custom' as *;
+
+.no-webp .contact {
+    background-image: url(../img/textura.jpg);
+}
+
+.webp .contact {
+    background-image: url(../img/textura.webp);
+}
+
+.contact {
+    background-color: $dark;
+    background-size: cover;
+    background-blend-mode: multiply;
+    text-align: center;
+
+    @include media-breakpoint-up(lg) {
+        text-align: left;
+    }
+
+    p {
+        color: $white;                
+    }
+
+    h2 {
+        font-size: 6rem;
+        color: $primary;
+        font-weight: bold;
+        line-height: 1;
+
+        @include media-breakpoint-up(lg) {
+            font-size: 8rem;            
+        }
+
+        span {
+            color: $white;
+        }
+    }
+}

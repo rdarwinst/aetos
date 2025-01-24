@@ -1,0 +1,38 @@
+@use '../custom' as *;
+
+.no-webp .header {
+    background-image: url(../img/header.jpg);
+}
+
+.webp .header {
+    background-image: url(../img/header.webp);
+}
+
+.header {
+    background-size: cover;
+    background-position: top center;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+
+    h1 {
+        color: $white;
+        font-weight: 700;
+        text-align: center;
+        font-size: 6rem;
+        width: 50rem;
+        text-transform: uppercase;
+
+        span {
+            color: transparentize($white, .7%);
+            -webkit-text-stroke: 1px $white;
+        }
+
+
+        @include media-breakpoint-up(lg) {
+            font-size: 12rem;
+            width: 80rem;
+        }
+    }
+
+
+}

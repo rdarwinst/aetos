@@ -1,0 +1,76 @@
+@use '../custom' as *;
+
+.no-webp .proyectos {
+    background-image: url(../img/textura.jpg);
+}
+
+.webp .proyectos {
+    background-image: url(../img/textura.webp);
+}
+
+.proyectos {
+    background-size: cover;
+    background-color: $primary;
+    background-blend-mode: multiply;
+    position: relative;
+
+    @include media-breakpoint-up(lg) {
+        &::before {
+            content: '';
+            height: 16rem;
+            width: 1rem;
+            background-color: $dark;
+            position: absolute;
+            display: inline-block;
+            top: 0;
+            left: 40vw;
+        }
+    }
+
+    .proyecto {
+
+        background-color: $dark;
+        padding: 2rem 2rem 1rem 2rem;
+
+
+        img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+
+    .textos {
+        h2 {
+            font-size: 6rem;
+            font-weight: 700;
+            line-height: .6;
+            color: $info;
+            text-align: center;
+
+            @include media-breakpoint-up(lg) {
+                text-align: left;
+                font-size: 12rem;
+            }
+
+            span {
+                color: transparentize($dark, .3%);
+                text-transform: uppercase;
+            }
+
+        }
+
+        p {
+            text-align: center;
+            color: $white;
+
+            @include media-breakpoint-up(lg) {
+                text-align: left;
+            }
+
+            span {
+                color: $info;
+            }
+        }
+    }
+}
