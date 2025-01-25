@@ -1,0 +1,36 @@
+@keyframes fadeIn {
+    from {
+        transform: translateX(-100%) scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(1) scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes overlay {
+    from {
+        z-index: 1;
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        z-index: 2;
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
