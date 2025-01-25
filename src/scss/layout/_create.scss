@@ -13,28 +13,50 @@
     background-color: $white;
     background-blend-mode: multiply;
 
+
     h2 {
-        font-size: 6rem;
+        font-size: 7rem;
         font-weight: 700;
         text-transform: uppercase;
         line-height: 1;
 
+
         @include media-breakpoint-up(lg) {
-            font-size: 10rem;
+            font-size: 12rem;
         }
 
         span {
+            display: block;
             &:nth-child(1) {
                 color: transparent;
                 -webkit-text-stroke: 1px $dark;
-                text-align: center;
                 text-transform: capitalize;
+                font-size: 4.5rem;
+                text-align: center;  
+
+                @include media-breakpoint-up(lg) {
+                    font-size: 10rem;                                  
+                }
             }
 
             &:nth-child(2) {
-                color: $primary;                           
-                letter-spacing: 4px;
+                color: $primary;     
+                letter-spacing: .8rem;    
+                font-size: 8rem;                  
+                
+                @include media-breakpoint-up(lg) {
+                    font-size: 16rem;            
+                    margin-left: -2rem;
+                }
             }
+        }
+    }
+
+    .text {
+        letter-spacing: .3rem;
+
+        @include media-breakpoint-up(lg) {
+            letter-spacing: 1rem;
         }
     }
 

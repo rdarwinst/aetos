@@ -11,7 +11,7 @@
 .contact {
     background-color: $dark;
     background-size: cover;
-    background-blend-mode: multiply;
+    background-blend-mode: color-burn;
     text-align: center;
 
     @include media-breakpoint-up(lg) {
@@ -19,21 +19,41 @@
     }
 
     p {
-        color: $white;                
+        color: $white; 
+        font-weight: 300; 
+        font-size: 2rem;    
+        
+        @include media-breakpoint-up(lg) {
+            font-size: 2.5rem;
+        }
+
+        &:nth-child(1){
+            font-size: 1.6rem;
+            text-transform: uppercase;        
+        }
+
     }
 
     h2 {
         font-size: 6rem;
         color: $primary;
         font-weight: bold;
-        line-height: 1;
+        line-height: .75;
 
         @include media-breakpoint-up(lg) {
-            font-size: 8rem;            
+            font-size: 9rem;            
         }
 
         span {
+            font-size: 11rem;
             color: $white;
+
+            @include media-breakpoint-up(lg) {
+                font-size: 14rem;     
+                margin-left: 8rem;       
+            }
         }
     }
+    
+
 }

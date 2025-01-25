@@ -1,33 +1,20 @@
 @use '../custom' as *;
 
-.no-webp .proyectos {
+.no-webp .works {
     background-image: url(../img/textura.jpg);
 }
 
-.webp .proyectos {
+.webp .works {
     background-image: url(../img/textura.webp);
 }
 
-.proyectos {
+.works {
     background-size: cover;
     background-color: $primary;
     background-blend-mode: multiply;
     position: relative;
 
-    @include media-breakpoint-up(lg) {
-        &::before {
-            content: '';
-            height: 16rem;
-            width: 1rem;
-            background-color: $dark;
-            position: absolute;
-            display: inline-block;
-            top: 0;
-            left: 40vw;
-        }
-    }
-
-    .proyecto {
+    .project {
 
         background-color: $dark;
         padding: 2rem 2rem 1rem 2rem;
@@ -42,11 +29,12 @@
 
     .textos {
         h2 {
-            font-size: 6rem;
+            font-size: 6.5rem;
             font-weight: 700;
             line-height: .6;
             color: $info;
             text-align: center;
+
 
             @include media-breakpoint-up(lg) {
                 text-align: left;
@@ -56,6 +44,12 @@
             span {
                 color: transparentize($dark, .3%);
                 text-transform: uppercase;
+                font-size: 8.5rem;
+
+                @include media-breakpoint-up(lg) {
+                    font-size: 14rem;
+                    margin-left: 4rem;
+                }
             }
 
         }
@@ -63,6 +57,9 @@
         p {
             text-align: center;
             color: $white;
+            font-weight: 300;
+            font-size: 2rem;
+            margin-top: 3rem;
 
             @include media-breakpoint-up(lg) {
                 text-align: left;

@@ -10,27 +10,70 @@
 
 .header {
     background-size: cover;
-    background-position: top center;
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
+    background-position: 50% center;
+    background-repeat: no-repeat;
 
-    h1 {
-        color: $white;
-        font-weight: 700;
-        text-align: center;
-        font-size: 6rem;
-        width: 50rem;
-        text-transform: uppercase;
+    .encabezados {
+        padding-bottom: 5rem;
 
-        span {
-            color: transparentize($white, .7%);
-            -webkit-text-stroke: 1px $white;
+
+        h1,
+        h2 {
+            font-weight: 700;
+            text-transform: uppercase;
+            line-height: .8;
+            color: $white;
         }
 
+        .encabezado-1 {
+            display: flex;
+            align-items: center;
 
-        @include media-breakpoint-up(lg) {
-            font-size: 12rem;
-            width: 80rem;
+            h1 {
+                font-size: 7rem;
+
+                @include media-breakpoint-up(lg) {
+                    font-size: 12rem;
+                }
+
+                span {
+                    -webkit-text-stroke: 1px $white;
+                    -webkit-text-fill-color: transparent;
+                }
+            }
+
+            a {
+                color: $dark;
+                font-weight: 300;
+                text-decoration: none;
+                display: none;
+                @include media-breakpoint-up(md) {
+                    display: block;
+                }
+            }
+
+        }
+
+        .encabezado-2 {
+            h2 {
+                font-size: 8.5rem;
+
+                @include media-breakpoint-up(lg) {
+                    font-size: 16rem;
+                    margin-left: 5rem;
+                    letter-spacing: 5px;
+                }
+
+                span {
+                    background-image: linear-gradient(to left, transparentize($white, .2%) 0%, transparentize($white, .2%) 100%);
+                    background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-size: 50rem;
+                    background-repeat: no-repeat;
+                    background-blend-mode: overlay;
+                }
+
+            }
         }
     }
 

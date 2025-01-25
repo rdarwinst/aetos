@@ -1,17 +1,17 @@
 @use '../custom' as *;
 
-.no-webp .galeria {
+.no-webp .gallery {
     background-image: url(../img/textura.jpg);
 }
 
-.webp .galeria {
+.webp .gallery {
     background-image: url(../img/textura.webp);
 }
 
-.galeria {
+.gallery {
     background-color: $negro;
     background-size: cover;
-    background-blend-mode: multiply;
+    background-blend-mode: color-burn;
     position: relative;
 
     .image-grid {
@@ -33,11 +33,15 @@
         }
 
         p {
-            color: $white;            
+            color: $white;
             font-weight: 300;
+            font-size: 2rem;
+            letter-spacing: 1px;
 
             &:nth-child(1) {
                 margin-top: 2rem;
+                font-size: 1.6rem;
+                text-transform: uppercase;
             }
 
             span {
@@ -45,17 +49,25 @@
             }
         }
 
-        h2 {            
+        h2 {
             font-size: 6rem;
             color: $info;
-            line-height: .8;
+            line-height: .7;
+
             @include media-breakpoint-up(lg) {
-                font-size: 10rem;
+                font-size: 8rem;
             }
 
             span {
                 color: $white;
-                text-transform: uppercase;                             
+                text-transform: uppercase;
+                font-size: 10rem;
+                display: block;
+
+                @include media-breakpoint-up(lg) {
+                    font-size: 12rem;
+                    margin-left: 4rem;
+                }
             }
         }
     }

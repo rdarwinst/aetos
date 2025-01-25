@@ -3,6 +3,7 @@
 .no-webp .team {
     background-image: url(../img/textura.jpg);
 }
+
 .webp .team {
     background-image: url(../img/textura.webp);
 }
@@ -12,35 +13,50 @@
     background-size: cover;
     background-blend-mode: multiply;
 
-    .frase {
-        text-align: center; 
-        font-size: 2.2rem;
+    &-text {
+        text-align: center;
+        font-size: 2rem;
         font-weight: 300;
-        color: $white;
-        max-width: 60rem;
-        margin-inline: auto;
+        color: $light;
+
+        @include media-breakpoint-up(lg) {
+            max-width: 60rem;
+            margin-inline: auto;
+        }
 
         span {
-            color: $dark;
+            color: $info;
         }
     }
 
-
     h2 {
-        text-align: center;
-        font-weight: 700;
         font-size: 6rem;
-        color: $dark;
+        font-weight: 700;
+        text-align: center;
         line-height: .8;
+        color: $dark;
+        transform: rotate(-90deg);
+
+        @include media-breakpoint-up(md) {
+            transform: unset;
+            line-height: .7;
+        }
 
         @include media-breakpoint-up(lg) {
-            font-size: 10rem;
+            font-size: 10rem;            
         }
 
         span {
-            color: $white;
-            text-transform: uppercase;
             display: block;
+            font-size: 8rem;
+            text-transform: uppercase;
+            color: $light;
+            margin-left: 8rem;
+
+            @include media-breakpoint-up(lg) {
+                font-size: 12rem;
+                margin-left: 0;
+            }
         }
     }
 }

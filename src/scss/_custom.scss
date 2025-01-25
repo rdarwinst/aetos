@@ -7,7 +7,7 @@ $gris: #666666;
 $dark: $negro;
 $primary: $azul;
 $info: $azul-claro;
-$light: $gris;
+$gray-600: $gris;
 
 /* Tipografía */
 $font-family-base: "Prompt", serif;
@@ -20,6 +20,11 @@ $navbar-dark-color: $dark;
 $body-bg-dark: $dark;
 
 
-/* FOrmularios */
+/* Formularios */
 
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
+
+
+html {
+    scrollbar-width: none;
+}

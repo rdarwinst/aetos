@@ -13,29 +13,37 @@
     background-size: cover;
     background-blend-mode: multiply;
 
-    h2 {
-        text-align: center;
+    h2 {        
+        font-size: 6rem;
         font-weight: 700;
-        color: $light;    
-        font-size: 6rem;    
-        text-transform: uppercase;
+        text-align: center;
+        color: transparent;
+        -webkit-text-stroke: 1px $gray-600;
+        line-height: .7;
+        margin-top: 2rem;
 
         @include media-breakpoint-up(lg) {
-            font-size: 10rem;    
-            line-height: 1;
+            font-size: 8rem;
         }
 
         span {
-            display: block;
-            color: transparent;
-            -webkit-text-stroke: 1px $light;
-            text-transform: capitalize;
+            color: transparentize($gray-600, .2%);
+            font-size: 7.5rem;
+            display: block;            
+            -webkit-text-stroke: 0px;
+            text-transform: uppercase;
+            margin-left: 4rem;            
+            
 
+            @include media-breakpoint-up(lg) {
+                font-size: 12rem;
+                margin-left: 40rem;
+            }
         }
     }
 
     p {
-        color: $light;
+        color: $gray-600;
 
         span {
             color: $primary;
