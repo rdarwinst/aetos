@@ -14,12 +14,13 @@
     background-color: $white;
     background-blend-mode: multiply;
 
-    animation: fadeIn ease-in;
+    /* Animación de Entrada */
+    animation: fadeIn 1.5s ease-in-out;
     animation-timeline: view();
-    animation-range: entry 0% exit 15%;
-    will-change: transform, scale, opacity;
-    pointer-events: none;
-
+    animation-range: entry 10rem exit 1%;
+    /* Controles para optimizar el funcionamiento */
+    will-change: opacity, transform;
+    transform-origin: center;
 
     h2 {
         font-size: 7rem;
@@ -34,25 +35,26 @@
 
         span {
             display: block;
+
             &:nth-child(1) {
                 color: transparent;
                 -webkit-text-stroke: 1px $dark;
                 text-transform: capitalize;
                 font-size: 4.5rem;
-                text-align: center;  
+                text-align: center;
 
                 @include media-breakpoint-up(lg) {
-                    font-size: 10rem;                                  
+                    font-size: 10rem;
                 }
             }
 
             &:nth-child(2) {
-                color: $primary;     
-                letter-spacing: .8rem;    
-                font-size: 8rem;                  
-                
+                color: $primary;
+                letter-spacing: .8rem;
+                font-size: 8rem;
+
                 @include media-breakpoint-up(lg) {
-                    font-size: 16rem;            
+                    font-size: 16rem;
                     margin-left: -2rem;
                 }
             }
@@ -72,7 +74,7 @@
         font-weight: 300;
         text-align: center;
 
-        @include media-breakpoint-up(lg) {            
+        @include media-breakpoint-up(lg) {
             text-align: left;
         }
     }

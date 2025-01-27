@@ -1,4 +1,5 @@
 @use '../custom' as *;
+@use 'utils/animations';
 
 .no-webp .header {
     background-image: url(../img/header.jpg);
@@ -8,10 +9,17 @@
     background-image: url(../img/header.webp);
 }
 
+
 .header {
     background-size: cover;
     background-position: 50% center;
     background-repeat: no-repeat;
+
+    animation: fadeOut 1.5s linear;
+    animation-timeline: view();
+    animation-range: exit 40%;
+    will-change: transform, opacity;
+    transform-origin: center;
 
     .encabezados {
         padding-bottom: 5rem;

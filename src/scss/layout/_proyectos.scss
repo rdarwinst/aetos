@@ -13,13 +13,11 @@
     background-size: cover;
     background-color: $primary;
     background-blend-mode: multiply;
-    position: relative;
-
-    animation: overlay ease-in;
+    animation: fadeIn 1.5s ease-in-out;
     animation-timeline: view();
-    animation-range: entry 10rem exit 30%;
-    will-change: z-index, transform, opacity;
-    pointer-events: none;
+    animation-range: entry 0% exit 5%;
+    will-change: transform, opacity;
+    transform-origin: center;
 
     .project {
 

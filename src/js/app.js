@@ -1,10 +1,11 @@
 const bootstrap = require('bootstrap');
 
 document.addEventListener('DOMContentLoaded', function () {
-    cambiarLogo();
+    changeLogo();
+    formValidation();
 });
 
-function cambiarLogo() {
+function changeLogo() {
     const secciones = document.querySelectorAll('section');
     const logo = document.querySelector('.navbar-brand img');
 
@@ -31,10 +32,28 @@ function cambiarLogo() {
                 }
             }
         });
-        
+
         if (!logoChanged) { // Si no se ha cambiado el logo, poner por defecto
             logo.src = defaultLogo;
         }
     });
 }
 
+function formValidation() {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+        }, false)
+    })
+}
