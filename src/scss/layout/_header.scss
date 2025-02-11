@@ -1,5 +1,4 @@
 @use '../custom' as *;
-@use 'utils/animations';
 
 .no-webp .header {
     background-image: url(../img/header.jpg);
@@ -38,7 +37,7 @@
             align-items: center;
 
             h1 {
-                font-size: 7rem;
+                font-size: 5rem;
 
                 @include media-breakpoint-up(lg) {
                     font-size: 12rem;
@@ -55,6 +54,7 @@
                 font-weight: 300;
                 text-decoration: none;
                 display: none;
+
                 @include media-breakpoint-up(md) {
                     display: block;
                 }
@@ -64,7 +64,7 @@
 
         .encabezado-2 {
             h2 {
-                font-size: 8.5rem;
+                font-size: 7rem;
 
                 @include media-breakpoint-up(lg) {
                     font-size: 16rem;
@@ -73,7 +73,7 @@
                 }
 
                 span {
-                    background-image: linear-gradient(to left, transparentize($white, .2%) 0%, transparentize($white, .2%) 100%);
+                    background-image: linear-gradient(to left, transparentize($white, .3%) 0%, transparentize($white, .3%) 100%);
                     background-clip: text;
                     -webkit-text-fill-color: transparent;
                     background-size: 50rem;
@@ -84,6 +84,10 @@
             }
         }
     }
+}
 
-
+.link-primary {
+    &:hover {
+        color: $light!important;
+    }
 }

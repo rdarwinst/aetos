@@ -1,23 +1,18 @@
 @use '../custom' as *;
-@use 'utils/animations';
 
-.no-webp .works {
-    background-image: url(../img/textura.jpg);
-}
+// .no-webp .works {
+//     background-image: url(../img/textura.jpg);
+// }
 
-.webp .works {
-    background-image: url(../img/textura.webp);
-}
+// .webp .works {
+//     background-image: url(../img/textura.webp);
+// }
 
 .works {
     background-size: cover;
-    background-color: $primary;
-    background-blend-mode: multiply;
-    animation: fadeIn 1.5s ease-in-out;
-    animation-timeline: view();
-    animation-range: entry 0% exit 5%;
-    will-change: transform, opacity;
-    transform-origin: center;
+    // background-color: $primary;
+    // background-blend-mode: multiply;
+
 
     .project {
 

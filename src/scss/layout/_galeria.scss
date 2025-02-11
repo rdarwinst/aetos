@@ -1,24 +1,17 @@
 @use '../custom' as *;
-@use 'utils/animations';
 
-.no-webp .gallery {
-    background-image: url(../img/textura.jpg);
-}
+// .no-webp .gallery {
+//     background-image: url(../img/textura.jpg);
+// }
 
-.webp .gallery {
-    background-image: url(../img/textura.webp);
-}
+// .webp .gallery {
+//     background-image: url(../img/textura.webp);
+// }
 
 .gallery {
     background-color: $negro;
-    background-size: cover;
-    background-blend-mode: color-burn;
-    
-    animation: fadeIn 1.5s ease-in-out;
-    animation-timeline: view();
-    animation-range: entry 0% exit 5%;
-    will-change: transform, opacity;
-    transform-origin: center;
+    // background-size: cover;
+    // background-blend-mode: color-burn;
 
     .image-grid {
         display: flex;
@@ -56,7 +49,7 @@
         }
 
         h2 {
-            font-size: 6rem;
+            font-size: 5rem;
             color: $info;
             line-height: .7;
 
@@ -67,7 +60,7 @@
             span {
                 color: $white;
                 text-transform: uppercase;
-                font-size: 10rem;
+                font-size: 7rem;
                 display: block;
 
                 @include media-breakpoint-up(lg) {
@@ -75,6 +68,26 @@
                     margin-left: 4rem;
                 }
             }
+        }
+    }
+
+    .complementario {
+        max-width: 75dvw;
+        margin-inline: auto;
+
+        @include media-breakpoint-up(lg) {
+            max-width: auto;
+            margin-inline: none;
+        }
+    }
+
+    .galeria {
+        max-width: 85dvw;
+        margin-inline: auto;
+
+        @include media-breakpoint-up(lg) {
+            max-width: auto;
+            margin-inline: none;
         }
     }
 }

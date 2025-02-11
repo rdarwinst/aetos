@@ -21,11 +21,18 @@ $body-bg-dark: $dark;
 
 
 /* Formularios */
-
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';
-
 
 html {
     scrollbar-width: none;
     scroll-behavior: smooth;
+}
+
+body {
+    background-color: #000008;
+}
+
+.subElement {
+    opacity: 0;
+    visibility: hidden;
 }

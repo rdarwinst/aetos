@@ -1,32 +1,24 @@
 @use '../custom' as *;
-@use 'utils/animations';
 
-.no-webp .create {
-    background-image: url(../img/textura.jpg);
-}
+// .no-webp .create {
+//     background-image: url(../img/textura.jpg);
+// }
 
-.webp .create {
-    background-image: url(../img/textura.webp);
-}
+// .webp .create {
+//     background-image: url(../img/textura.webp);
+// }
 
 .create {
-    background-size: cover;
-    background-color: $white;
-    background-blend-mode: multiply;
-
-    /* Animación de Entrada */
-    animation: fadeIn 1.5s ease-in-out;
-    animation-timeline: view();
-    animation-range: entry 10rem exit 1%;
-    /* Controles para optimizar el funcionamiento */
-    will-change: opacity, transform;
-    transform-origin: center;
+    // background-size: cover;
+    background-color: $primary;
+    // background-blend-mode: multiply;
 
     h2 {
         font-size: 7rem;
         font-weight: 700;
         text-transform: uppercase;
         line-height: 1;
+
 
 
         @include media-breakpoint-up(lg) {
@@ -49,7 +41,7 @@
             }
 
             &:nth-child(2) {
-                color: $primary;
+                color: $white;
                 letter-spacing: .8rem;
                 font-size: 8rem;
 
@@ -59,6 +51,15 @@
                 }
             }
         }
+    }
+
+    .complementario {
+        max-width: 75dvw;
+
+        @include media-breakpoint-up(lg) {
+            max-width: auto;
+        }
+
     }
 
     .text {
@@ -77,6 +78,8 @@
         @include media-breakpoint-up(lg) {
             text-align: left;
         }
+
+
     }
 
 }

@@ -1,24 +1,17 @@
 @use '../custom' as *;
-@use 'utils/animations';
 
-.no-webp .footer {
-    background-image: url(../img/textura.jpg);
-}
+// .no-webp .footer {
+//     background-image: url(../img/textura.jpg);
+// }
 
-.webp .footer {
-    background-image: url(../img/textura.webp);
-}
+// .webp .footer {
+//     background-image: url(../img/textura.webp);
+// }
 
 .footer {
     background-color: $primary;
-    background-size: cover;
-    background-blend-mode: multiply;
-
-    animation: zoomIn;
-    animation-timeline: view();
-    animation-range: entry 0%;
-    will-change: transform, opacity;
-    transform-origin: center;
+    // background-size: cover;
+    // background-blend-mode: multiply;
 
     h2, h3, p {
         color: $dark;

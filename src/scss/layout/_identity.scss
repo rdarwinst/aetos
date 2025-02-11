@@ -1,27 +1,21 @@
 @use '../custom' as *;
-@use 'utils/animations';
 
-.no-webp .identity {
-    background-image: url(../img/textura.jpg);
-}
+// .no-webp .identity {
+//     background-image: url(../img/textura.jpg);
+// }
 
-.webp .identity {
-    background-image: url(../img/textura.webp);
-}
+// .webp .identity {
+//     background-image: url(../img/textura.webp);
+// }
 
 .identity {
     background-color: $white;
-    background-size: cover;
-    background-blend-mode: multiply;
+    // background-size: cover;
+    // background-blend-mode: multiply;
 
-    animation: fadeIn 1.5s ease-in-out;
-    animation-timeline: view();
-    animation-range: entry 0% exit 5%;
-    will-change: transform, opacity;
-    transform-origin: center;
 
-    h2 {        
-        font-size: 6rem;
+    h2 {
+        font-size: 4.2rem;
         font-weight: 700;
         text-align: center;
         color: transparent;
@@ -29,18 +23,19 @@
         line-height: .7;
         margin-top: 2rem;
 
+
         @include media-breakpoint-up(lg) {
             font-size: 8rem;
         }
 
         span {
             color: transparentize($gray-600, .2%);
-            font-size: 7.5rem;
-            display: block;            
+            font-size: 5.2rem;
+            display: block;
             -webkit-text-stroke: 0px;
             text-transform: uppercase;
-            margin-left: 4rem;            
-            
+            margin-left: 4rem;
+
 
             @include media-breakpoint-up(lg) {
                 font-size: 12rem;
@@ -52,6 +47,7 @@
     p {
         color: $gray-600;
 
+
         span {
             color: $primary;
         }
@@ -60,10 +56,11 @@
     .col-md-3 {
         padding: 1rem 1rem 1rem 1rem;
         background: $dark;
+
     }
 
     img {
-        width: 100%;
+        width: 100dvw;
 
         @include media-breakpoint-up(md) {
             height: 40rem;
