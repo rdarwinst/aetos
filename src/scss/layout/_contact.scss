@@ -1,17 +1,17 @@
 @use '../custom' as *;
 
-// .no-webp .contact {
-//     background-image: url(../img/textura.jpg);
-// }
+.no-webp .contact {
+    background-image: url(../img/tex-3.jpg);
+}
 
-// .webp .contact {
-//     background-image: url(../img/textura.webp);
-// }
+.webp .contact {
+    background-image: url(../img/tex-3.webp);
+}
 
 .contact {
     background-color: $dark;
-    // background-size: cover;
-    // background-blend-mode: color-burn;
+    background-size: cover;
+    background-blend-mode: soft-light;
     text-align: center;
 
     @include media-breakpoint-up(lg) {

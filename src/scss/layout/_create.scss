@@ -1,17 +1,17 @@
 @use '../custom' as *;
 
-// .no-webp .create {
-//     background-image: url(../img/textura.jpg);
-// }
+.no-webp .create {
+    background-image: url(../img/tex-1.jpg);
+}
 
-// .webp .create {
-//     background-image: url(../img/textura.webp);
-// }
+.webp .create {
+    background-image: url(../img/tex-1.webp);
+}
 
 .create {
-    // background-size: cover;
+    background-size: cover;
     background-color: $primary;
-    // background-blend-mode: multiply;
+    background-blend-mode: multiply;
 
     h2 {
         font-size: 7rem;

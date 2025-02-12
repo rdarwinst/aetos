@@ -1,17 +1,17 @@
 @use '../custom' as *;
 
-// .no-webp .identity {
-//     background-image: url(../img/textura.jpg);
-// }
+.no-webp .identity {
+    background-image: url(../img/tex-2.jpg);
+}
 
-// .webp .identity {
-//     background-image: url(../img/textura.webp);
-// }
+.webp .identity {
+    background-image: url(../img/tex-2.webp);
+}
 
 .identity {
     background-color: $white;
-    // background-size: cover;
-    // background-blend-mode: multiply;
+    background-size: cover;
+    background-blend-mode: multiply;
 
 
     h2 {

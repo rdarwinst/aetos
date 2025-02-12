@@ -1,17 +1,18 @@
 @use '../custom' as *;
 
-// .no-webp .footer {
-//     background-image: url(../img/textura.jpg);
-// }
+.no-webp .footer {
+    background-image: url(../img/footer.jpg);
+}
 
-// .webp .footer {
-//     background-image: url(../img/textura.webp);
-// }
+.webp .footer {
+    background-image: url(../img/footer.webp);
+}
 
 .footer {
     background-color: $primary;
-    // background-size: cover;
-    // background-blend-mode: multiply;
+    background-size: cover;
+    background-blend-mode: multiply;
+    opacity: .5;
 
     h2, h3, p {
         color: $dark;
