@@ -1,0 +1,10 @@
+@use '../custom' as *;
+
+.btn-portfolio {
+    @include button-variant($dark,
+        transparent,
+        $primary,
+        $primary,
+        $dark,
+        $dark);
+}

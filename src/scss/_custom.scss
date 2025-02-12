@@ -19,6 +19,15 @@ $font-size-base: 1.8rem;
 $navbar-dark-color: $dark;
 $body-bg-dark: $dark;
 
+/* Modal */
+$modal-content-bg: $primary;
+$modal-header-border-color: transparent;
+$modal-content-border-radius: 0;
+$modal-header-padding-y: 2rem;
+$modal-backdrop-opacity: .7;
+
+
+
 
 /* Formularios */
 @import '../../node_modules/bootstrap/scss/bootstrap.scss';

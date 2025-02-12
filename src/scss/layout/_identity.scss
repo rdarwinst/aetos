@@ -56,11 +56,52 @@
     .col-md-3 {
         padding: 1rem 1rem 1rem 1rem;
         background: $dark;
+    }
 
+    .service {
+        position: relative;
+
+        &__info {
+            background-color: transparentize($primary, .5%);
+            position: absolute;
+            inset: 0;
+            padding: 2rem 2rem 2rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s ease;
+
+        }
+
+        &__title {
+            font-size: 3.4rem;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        &__description {
+            line-height: 1.6;
+            color: $dark;
+            font-size: 2rem;
+        }
+
+        &:hover {
+            .service__info {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            img {
+                filter: blur(4px);
+            }
+        }
     }
 
     img {
         width: 100dvw;
+        transition: filter .3s ease-in-out;
 
         @include media-breakpoint-up(md) {
             height: 40rem;

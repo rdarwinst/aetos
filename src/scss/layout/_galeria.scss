@@ -91,3 +91,19 @@
         }
     }
 }
+
+.popup-title {
+    padding: 2rem 2rem 2rem 2rem;
+    font-size: 4.5rem;
+    text-align: center;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: transparentize($white, .3%);
+    line-height: .5;
+
+    span {
+        display: block;
+        color: transparentize($dark, .3%);
+        z-index: -1;
+    }
+}

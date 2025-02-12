@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     animaciones();
     changeNavColor();
     goToHomeIcon();
+    cerrarOffCanvas();
 });
 
 function formValidation() {
@@ -79,7 +80,7 @@ function changeNavColor() {
     function updateNavColor() {
         secciones.forEach(seccion => {
             const rect = seccion.getBoundingClientRect();
-            const visibleHeight = rect.height * 0.5; // 10% de la altura de la sección
+            const visibleHeight = rect.height * 0.3; // 10% de la altura de la sección
 
             if (rect.bottom > visibleHeight && rect.top < window.innerHeight - visibleHeight) {
                 let computedStyle = window.getComputedStyle(seccion);
@@ -121,7 +122,7 @@ function goToHomeIcon() {
 
     window.addEventListener('scroll', function () {
         const windowHeight = window.innerHeight;
-        const position = footer.getBoundingClientRect();        
+        const position = footer.getBoundingClientRect();
 
         if (position.top < windowHeight && position.bottom > windowHeight * 0.9) {
             goBtn.classList.remove('d-none');
@@ -130,4 +131,18 @@ function goToHomeIcon() {
         }
     });
 
+}
+
+function cerrarOffCanvas() {
+    const menuOffcanvas = document.querySelector('#offcanvasNavbar');
+    const navLinks = document.querySelectorAll('.offcanvas-body .nav-link');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const offcanvas = bootstrap.Offcanvas.getInstance(menuOffcanvas);
+            if(offcanvas) {
+                offcanvas.hide();
+            }
+        })
+    });
 }
