@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     changeNavColor();
     goToHomeIcon();
     cerrarOffCanvas();
+    iniciarSwiper();
 });
 
 function formValidation() {
@@ -80,7 +81,7 @@ function changeNavColor() {
     function updateNavColor() {
         secciones.forEach(seccion => {
             const rect = seccion.getBoundingClientRect();
-            const visibleHeight = rect.height * 0.3; // 10% de la altura de la sección
+            const visibleHeight = rect.height * 0.5; // 10% de la altura de la sección
 
             if (rect.bottom > visibleHeight && rect.top < window.innerHeight - visibleHeight) {
                 let computedStyle = window.getComputedStyle(seccion);
@@ -140,9 +141,38 @@ function cerrarOffCanvas() {
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             const offcanvas = bootstrap.Offcanvas.getInstance(menuOffcanvas);
-            if(offcanvas) {
+            if (offcanvas) {
                 offcanvas.hide();
             }
         })
     });
+}
+
+function iniciarSwiper() {
+    const swiper = document.querySelector('.swiper');
+
+    if (swiper) {
+        const opciones = {
+            loop: true,
+            speed: 600,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            pagination: document.querySelector('.swiper-pagination') ? {
+                el: '.swiper-pagination'
+            } : null,
+            navigation: {
+                prevEl: document.querySelector('.swiper-button-prev') ? '.swiper-button-prev' : null,
+                nextEl: document.querySelector('.swiper-button-next') ? '.swiper-button-next' : null,
+            },
+            centeredSlides: true,
+            grabCursor: true,
+        };
+        new Swiper('.swiper', opciones);
+    }
 }

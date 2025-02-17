@@ -1,17 +1,17 @@
 @use '../custom' as *;
 
-.no-webp .team {
-    background-image: url(../img/tex-4.jpg);
-}
+// .no-webp .team {
+//     background-image: url(../img/tex-4.jpg);
+// }
 
-.webp .team {
-    background-image: url(../img/tex-4.webp);
-}
+// .webp .team {
+//     background-image: url(../img/tex-4.webp);
+// }
 
 .team {
     background-color: $primary;
-    background-size: cover;
-    background-blend-mode: hard-light;
+    // background-size: cover;
+    // background-blend-mode: hard-light;
 
     &-text {
         text-align: center;

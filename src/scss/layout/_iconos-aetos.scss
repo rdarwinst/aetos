@@ -1,0 +1,47 @@
+@use '../custom' as *;
+
+.iconos-aetos {
+    background-color: $primary;
+
+    .icono-info {
+        h2 {
+            font-weight: 700;
+            color: $dark;
+            font-size: 4.2rem;
+            line-height: .7;
+
+            @include media-breakpoint-up(lg) {
+                font-size: 8rem;
+            }
+
+            span {
+                display: block;
+                color: $white;
+                text-transform: uppercase;
+                font-weight: 900;
+
+                @include media-breakpoint-up(lg) {
+                    font-size: 10rem;
+                }
+            }
+        }
+
+        p {
+            font-size: 2rem;
+            font-weight: 300;
+        }
+    }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: $dark;
+}
+
+.swiper-pagination-bullet {
+    background-color: $white;
+
+    &-active {
+        background-color: $dark;
+    }
+}
