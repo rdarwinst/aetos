@@ -1,0 +1,17 @@
+{
+    "name": "rdarw/aetos",
+    "description": "Website for Aëtos Company",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Darwin Ramirez",
+            "email": "rdarwinst@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "App\\": "./classes"
+        }
+    }
+}

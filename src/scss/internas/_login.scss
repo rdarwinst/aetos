@@ -1,0 +1,22 @@
+@use '../custom' as *;
+
+.webp .login {
+    background-image: url(../img/header.webp);
+}
+
+.no-webp .login {
+    background-image: url(../img/header.jpg);
+}
+
+.login {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    &-form {
+        box-shadow: 3px 3px 23px 0px $dark;
+        -webkit-box-shadow: 3px 3px 23px 0px $dark;
+        -moz-box-shadow: 3px 3px 23px 0px $dark;
+    }
+
+}

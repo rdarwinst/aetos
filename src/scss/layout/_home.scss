@@ -1,26 +1,21 @@
 @use '../custom' as *;
 
-.no-webp .header {
+.no-webp .home {
     background-image: url(../img/header.jpg);
 }
 
-.webp .header {
+.webp .home {
     background-image: url(../img/header.webp);
 }
 
 
-.header {
+.home {
     background-size: cover;
     background-position: 50% center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
 
-    animation: fadeOut 1.5s linear;
-    animation-timeline: view();
-    animation-range: exit 40%;
-    will-change: transform, opacity;
-    transform-origin: center;
-
-    .encabezados {
+    .headers {
         padding-bottom: 5rem;
 
 
@@ -32,12 +27,13 @@
             color: $white;
         }
 
-        .encabezado-1 {
+        .header-1 {
             display: flex;
-            align-items: center;
+            /* align-items: center; */
 
             h1 {
                 font-size: 5rem;
+                text-shadow: 7px 7px 1px transparentize($dark, .82%);
 
                 @include media-breakpoint-up(lg) {
                     font-size: 12rem;
@@ -62,13 +58,13 @@
 
         }
 
-        .encabezado-2 {
+        .header-2 {
             h2 {
                 font-size: 7rem;
 
                 @include media-breakpoint-up(lg) {
                     font-size: 16rem;
-                    margin-left: 5rem;
+                    margin-left: 7rem;
                     letter-spacing: 5px;
                 }
 

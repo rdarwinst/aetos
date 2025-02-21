@@ -1,21 +1,21 @@
 @use '../custom' as *;
 
-// .no-webp .identity {
+// .no-webp .services {
 //     background-image: url(../img/tex-2.jpg);
 // }
 
-// .webp .identity {
+// .webp .services {
 //     background-image: url(../img/tex-2.webp);
 // }
 
-.identity {
+.services {
     background-color: $white;
     // background-size: cover;
     // background-blend-mode: multiply;
 
 
     h2 {
-        font-size: 4.2rem;
+        font-size: 3.8rem;
         font-weight: 700;
         text-align: center;
         color: transparent;
@@ -25,12 +25,12 @@
 
 
         @include media-breakpoint-up(lg) {
-            font-size: 8rem;
+            font-size: 6rem;
         }
 
         span {
             color: transparentize($gray-600, .2%);
-            font-size: 5.2rem;
+            font-size: 4rem;
             display: block;
             -webkit-text-stroke: 0px;
             text-transform: uppercase;
@@ -38,7 +38,7 @@
 
 
             @include media-breakpoint-up(lg) {
-                font-size: 12rem;
+                font-size: 8rem;
                 margin-left: 40rem;
             }
         }
@@ -69,6 +69,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            gap: 1rem;
             opacity: 0;
             visibility: hidden;
             transition: all .3s ease;
@@ -82,7 +83,6 @@
         }
 
         &__description {
-            line-height: 1.6;
             color: $dark;
             font-size: 2rem;
         }
@@ -101,7 +101,7 @@
 
     img {
         width: 100dvw;
-        transition: filter .3s ease-in-out;
+        
 
         @include media-breakpoint-up(md) {
             height: 40rem;

@@ -1,17 +1,17 @@
 @use '../custom' as *;
 
 .no-webp .contact {
-    background-image: url(../img/tex-3.jpg);
+    background-image: url(../img/tex-6.jpg);
 }
 
 .webp .contact {
-    background-image: url(../img/tex-3.webp);
+    background-image: url(../img/tex-6.webp);
 }
 
 .contact {
     background-color: $dark;
     background-size: cover;
-    background-blend-mode: soft-light;
+    background-blend-mode: lighten;
     text-align: center;
 
     @include media-breakpoint-up(lg) {
@@ -45,11 +45,11 @@
         }
 
         span {
-            font-size: 9rem;
+            font-size: 6rem;
             color: $white;
 
             @include media-breakpoint-up(lg) {
-                font-size: 14rem;     
+                font-size: 10rem;     
                 margin-left: 8rem;       
             }
         }

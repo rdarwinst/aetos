@@ -1,23 +1,24 @@
 @use '../custom' as *;
 
-.no-webp .create {
-    background-image: url(../img/tex-1.jpg);
+.no-webp .about {
+    background-image: url(../img/tex-6.jpg);
 }
 
-.webp .create {
-    background-image: url(../img/tex-1.webp);
+.webp .about {
+    background-image: url(../img/tex-6.webp);
 }
 
-.create {
+.about {
     background-size: cover;
-    background-color: $primary;
-    background-blend-mode: multiply;
+    background-color: $dark;
+    background-blend-mode: lighten;
 
     h2 {
         font-size: 7rem;
         font-weight: 700;
         text-transform: uppercase;
         line-height: 1;
+        color: $white;
 
 
 
@@ -30,7 +31,7 @@
 
             &:nth-child(1) {
                 color: transparent;
-                -webkit-text-stroke: 1px $dark;
+                -webkit-text-stroke: 1px $white;
                 text-transform: capitalize;
                 font-size: 4.5rem;
                 text-align: center;
@@ -41,7 +42,7 @@
             }
 
             &:nth-child(2) {
-                color: $white;
+                color: $primary;
                 letter-spacing: .8rem;
                 font-size: 8rem;
 
@@ -53,33 +54,27 @@
         }
     }
 
-    .complementario {
+    .complementary {
         max-width: 75dvw;
+        font-size: 2rem;
+        font-weight: 300;
+        text-align: center;
+        color: $white;
 
         @include media-breakpoint-up(lg) {
             max-width: auto;
+            text-align: left;
         }
 
     }
 
     .text {
         letter-spacing: .3rem;
+        color: $white;
 
         @include media-breakpoint-up(lg) {
             letter-spacing: 1rem;
         }
-    }
-
-    .texto {
-        font-size: 2rem;
-        font-weight: 300;
-        text-align: center;
-
-        @include media-breakpoint-up(lg) {
-            text-align: left;
-        }
-
-
     }
 
 }

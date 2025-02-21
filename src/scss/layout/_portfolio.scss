@@ -1,30 +1,35 @@
 @use '../custom' as *;
 
-.no-webp .gallery {
-    background-image: url(../img/tex-3.jpg);
+.no-webp .portfolio {
+    background-image: url(../img/tex-6.jpg);
 }
 
-.webp .gallery {
-    background-image: url(../img/tex-3.webp);
+.webp .portfolio {
+    background-image: url(../img/tex-6.webp);
 }
 
-.gallery {
+.portfolio {
     background-color: $negro;
     background-size: cover;
-    background-blend-mode: soft-light;
+    background-blend-mode: lighten;
 
     .image-grid {
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
 
-        // img {
-        //     width: 100%;
-        //     height: 30rem;            
-        // }
+        img {
+            width: 100%;
+            min-height: 30dvh;
+            object-fit: cover;
+
+            @include media-breakpoint-up(lg) {
+                height: 55dvh;
+            }
+        }
     }
 
-    .textos {
+    .texts {
         text-align: center;
 
         @include media-breakpoint-up(lg) {
@@ -71,7 +76,7 @@
         }
     }
 
-    .complementario {
+    .complementary {
         max-width: 75dvw;
         margin-inline: auto;
 
@@ -80,15 +85,61 @@
             margin-inline: none;
         }
     }
+}
 
-    .galeria {
-        max-width: 85dvw;
-        margin-inline: auto;
+.works {
+    max-width: 85dvw;
+    margin-inline: auto;
 
-        @include media-breakpoint-up(lg) {
-            max-width: auto;
-            margin-inline: none;
+    .work {
+        position: relative;
+
+        &__info {
+            position: absolute;
+            inset: 0;
+            background-color: transparentize($white, .5%);
+            padding: 1rem 1rem 1rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s linear;
         }
+
+        &__title {
+            text-transform: uppercase;
+            font-weight: 700;
+            color: $dark;
+            text-align: center;
+        }
+
+        &__description {
+            font-weight: 300;
+            text-align: center;
+            color: $dark;
+        }
+
+        &:hover {
+            .work__info {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            img {
+                filter: blur(2px) grayscale(1);
+            }
+        }
+
+        &:nth-child(even) .work__info {
+            background-color: transparentize($primary, .5%);
+        }
+    }
+
+    @include media-breakpoint-up(lg) {
+        max-width: auto;
+        margin-inline: none;
     }
 }
 

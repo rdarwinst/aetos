@@ -3,11 +3,13 @@ const bootstrap = require('bootstrap');
 document.addEventListener('DOMContentLoaded', function () {
     formValidation();
     smoothScroll();
-    animaciones();
+    animations();
     changeNavColor();
     goToHomeIcon();
-    cerrarOffCanvas();
-    iniciarSwiper();
+    closeOffCanvas();
+    swiperInit();
+    modalInfo();
+
 });
 
 function formValidation() {
@@ -43,8 +45,8 @@ function smoothScroll() {
 
 }
 
-function animaciones() {
-    const secciones = document.querySelectorAll(".seccion");
+function animations() {
+    const sections = document.querySelectorAll(".section");
 
     const observer = new IntersectionObserver(
         (entries, observer) => {
@@ -68,18 +70,18 @@ function animaciones() {
         { threshold: 0.1 } // Se activará cuando el 15% del elemento sea visible
     );
 
-    secciones.forEach((seccion) => observer.observe(seccion));
+    sections.forEach((seccion) => observer.observe(seccion));
 }
 
 function changeNavColor() {
-    const secciones = document.querySelectorAll('.seccion');
+    const sections = document.querySelectorAll('.section');
     const mainNav = document.querySelector('.navbar');
     const logo = document.querySelector('.navbar-brand img');
-    const redesSociales = document.querySelectorAll('.redes-sociales a');
-    const puntos = document.querySelectorAll('.punto');
+    const socialNetworks = document.querySelectorAll('.social-networks a');
+    const dots = document.querySelectorAll('.dot');
 
     function updateNavColor() {
-        secciones.forEach(seccion => {
+        sections.forEach(seccion => {
             const rect = seccion.getBoundingClientRect();
             const visibleHeight = rect.height * 0.5; // 10% de la altura de la sección
 
@@ -91,23 +93,23 @@ function changeNavColor() {
                 if (bgColor === 'rgb(0, 170, 215)') {
                     mainNav.style.backgroundColor = '#00aad7';
                     logo.src = 'build/img/logo-negro.svg';
-                    redesSociales.forEach(link => link.style.color = '#00091b');
-                    puntos.forEach(punto => punto.style.backgroundColor = '#00091b');
+                    socialNetworks.forEach(link => link.style.color = '#00091b');
+                    dots.forEach(punto => punto.style.backgroundColor = '#00091b');
                 } else if (bgColor === 'rgb(0, 9, 27)') {
                     mainNav.style.backgroundColor = '#00091b';
                     logo.src = 'build/img/logo-blanco.svg';
-                    redesSociales.forEach(link => link.style.color = '#ffffff');
-                    puntos.forEach(punto => punto.style.backgroundColor = '#ffffff');
+                    socialNetworks.forEach(link => link.style.color = '#ffffff');
+                    dots.forEach(punto => punto.style.backgroundColor = '#ffffff');
                 } else if (bgColor === 'rgb(255, 255, 255)') {
                     mainNav.style.backgroundColor = '#ffffff';
                     logo.src = 'build/img/logo-azul.svg';
-                    redesSociales.forEach(link => link.style.color = '#00aad7');
-                    puntos.forEach(punto => punto.style.backgroundColor = '#00aad7');
+                    socialNetworks.forEach(link => link.style.color = '#00aad7');
+                    dots.forEach(punto => punto.style.backgroundColor = '#00aad7');
                 } else {
                     mainNav.style.backgroundColor = 'transparent';
-                    logo.src = 'build/img/logo-negro.svg';
-                    redesSociales.forEach(link => link.style.color = '#00091b');
-                    puntos.forEach(punto => punto.style.backgroundColor = '#00091b');
+                    logo.src = 'build/img/logo-blanco.svg';
+                    socialNetworks.forEach(link => link.style.color = '#FFFFFF');
+                    dots.forEach(punto => punto.style.backgroundColor = '#FFFFFF');
                 }
             }
         });
@@ -134,7 +136,7 @@ function goToHomeIcon() {
 
 }
 
-function cerrarOffCanvas() {
+function closeOffCanvas() {
     const menuOffcanvas = document.querySelector('#offcanvasNavbar');
     const navLinks = document.querySelectorAll('.offcanvas-body .nav-link');
 
@@ -148,13 +150,16 @@ function cerrarOffCanvas() {
     });
 }
 
-function iniciarSwiper() {
+function swiperInit() {
     const swiper = document.querySelector('.swiper');
 
     if (swiper) {
         const opciones = {
-            loop: true,
-            speed: 600,
+            loop: false,
+            speed: 900,
+            direction: 'horizontal',
+            slidesPerView: 1,
+            spaceBetween: 10,
             autoplay: {
                 delay: 3000,
                 disableOnInteraction: false,
@@ -172,7 +177,33 @@ function iniciarSwiper() {
             },
             centeredSlides: true,
             grabCursor: true,
+            watchSlidesProgress: true,
+
         };
         new Swiper('.swiper', opciones);
     }
+}
+
+function modalInfo() {
+    const buttons = document.querySelectorAll('.work button');
+    const modal = document.querySelector('#projectModal');
+    const modalTitle = modal.querySelector('.modal-title');
+    const modalImg = modal.querySelector('picture img');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            const workInfo = this.closest('.work__info');
+            const title = workInfo.querySelector('.work__title').textContent;
+            // const description = workInfo.querySelector('.work__description');
+            const imgSrc = workInfo.previousElementSibling.querySelector('img').src;
+            const imgSrcSet = workInfo.previousElementSibling.querySelectorAll('source');
+
+            modalTitle.textContent = title;
+            modalImg.src = imgSrc;
+            imgSrcSet.forEach((source, index) => {
+                modal.querySelectorAll('picture img')[index].srcset = source.srcset;
+            });
+
+        });
+    });
 }

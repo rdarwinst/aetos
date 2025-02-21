@@ -10,13 +10,13 @@ $info: $azul-claro;
 $gray-600: $gris;
 
 /* Tipografía */
-$font-family-base: "Prompt", serif;
-$headings-font-family: "Prompt", serif;
+$font-family-base: "Nunito", serif;
+$headings-font-family: "Bai Jamjuree", serif;
 $font-size-root: 62.5%;
 $font-size-base: 1.8rem;
 
 /* Navegacion */
-$navbar-dark-color: $dark;
+$navbar-dark-color: $primary;
 $body-bg-dark: $dark;
 $navbar-toggler-focus-width: none;
 
@@ -27,6 +27,12 @@ $modal-content-border-radius: 0;
 $modal-header-padding-y: 2rem;
 $modal-backdrop-opacity: .7;
 
+/* Forms */
+$form-floating-line-height: 2;
+$form-floating-label-height: 1rem;
+$form-floating-label-disabled-color: $primary;
+$form-floating-height: add(3rem, 1rem);
+
 
 
 
@@ -36,10 +42,6 @@ $modal-backdrop-opacity: .7;
 html {
     scrollbar-width: none;
     scroll-behavior: smooth;
-}
-
-body {
-    background-color: #000008;
 }
 
 .subElement {

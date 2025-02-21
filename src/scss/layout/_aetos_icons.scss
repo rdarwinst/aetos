@@ -1,9 +1,9 @@
 @use '../custom' as *;
 
-.iconos-aetos {
+.aetos-icons {
     background-color: $primary;
 
-    .icono-info {
+    .icon-info {
         h2 {
             font-weight: 700;
             color: $dark;
@@ -11,7 +11,7 @@
             line-height: .7;
 
             @include media-breakpoint-up(lg) {
-                font-size: 8rem;
+                font-size: 7rem;
             }
 
             span {
@@ -21,7 +21,7 @@
                 font-weight: 900;
 
                 @include media-breakpoint-up(lg) {
-                    font-size: 10rem;
+                    font-size: 8.5rem;
                 }
             }
         }
@@ -31,17 +31,26 @@
             font-weight: 300;
         }
     }
-}
 
-.swiper-button-prev,
-.swiper-button-next {
-    color: $dark;
-}
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: $dark;
+    }
 
-.swiper-pagination-bullet {
-    background-color: $white;
+    .swiper-pagination-bullet {
+        background-color: $white;
 
-    &-active {
-        background-color: $dark;
+        &-active {
+            background-color: $dark;
+        }
+    }
+
+
+    .complementary {
+        span {
+            font-weight: 700;
+            text-transform: uppercase;
+            color: $dark;
+        }
     }
 }
