@@ -80,188 +80,199 @@ incluirTemplate('header'); ?>
                 <a href="/admin/slider/agregar.php" class="btn btn-outline-primary btn-lg rounded-0 text-uppercase fw-bold">Add Slide</a>
             </div>
 
-            <div class="table-responsive-md mt-3">
-                <table class="table align-middle table-hover">
-                    <thead>
-                        <tr class="text-center">
-                            <th scope="col" class="text-uppercase">Slide</th>
-                            <th scope="col" class="text-uppercase">Actions</th>
-                        </tr>
-                    </thead><!-- thead -->
-                    <tbody>
+            <div class="grid aetos-slider" style="--bs-gap: 1rem;">
 
-                        <tr>
-                            <td class="bg-primary">
 
-                                <div class="d-flex slide align-items-center justify-content-center">
-                                    <img src="/build/img/zeus.svg" alt="Slide Icon" style="width: 150px; height: 150px;" class="slide__img">
+                <div class="bg-primary p-4 g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 aetos-slide">
+                    <img src="/build/img/zeus.svg" alt="SLide Image" class="img-fluid">
+                    <div>
+                        <h5 class="text-dark fw-bold text-center">Ray</h5>
+                        <p class="fs-5 text-white text-uppercase fw-bold text-center">Authority</p>
+                    </div>
 
-                                    <div class="slide__info">
-                                        <h3 class="text-dark fs-3 fw-bold">Ray</h2>
-                                            <h4 class="text-white fs-2 fw-bold text-uppercase">Authority</h4>
-                                    </div>
+                    <div class="actions">
+                        <a href="#" class="btn btn-lg btn-dark text-uppercase fw-bold rounded-0 w-100 mb-3">Update Slide</a>
+                        <form class="w-100">
+                            <input type="hidden" name="id">
+                            <input type="hidden" name="type">
+                            <input type="submit" value="Delete" class="btn btn-lg btn-danger text-uppercase fw-bold rounded-0 w-100">
+                        </form>
+                    </div>
+                </div>
 
-                                </div>
-                            </td>
+                <div class="bg-primary p-4 g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 aetos-slide">
+                    <img src="/build/img/poseidon.svg" alt="SLide Image" class="img-fluid">
+                    <div>
+                        <h5 class="text-dark fw-bold text-center">Trident</h5>
+                        <p class="fs-5 text-white text-uppercase fw-bold text-center">Wealth</p>
+                    </div>
 
-                            <td>
-                                <a href="#" class="btn btn-lg btn-outline-primary rounded-0 text-uppercase fw-bold mb-3 w-100">Update Slide</a>
-                                <form>
-                                    <input type="hidden" name="id">
-                                    <button type="submit" class="btn btn-lg btn-outline-danger rounded-0 text-uppercase fw-bold mb-3 w-100">Delete Slide</button>
-                                </form>
-                            </td>
-                        </tr><!-- tr -->
+                    <div class="actions">
+                        <a href="#" class="btn btn-lg btn-dark text-uppercase fw-bold rounded-0 w-100 mb-3">Update Slide</a>
+                        <form class="w-100">
+                            <input type="hidden" name="id">
+                            <input type="hidden" name="type">
+                            <input type="submit" value="Delete" class="btn btn-lg btn-danger text-uppercase fw-bold rounded-0 w-100">
+                        </form>
+                    </div>
+                </div>
 
-                        <tr>
-                            <td class="bg-primary">
+                <div class="bg-primary p-4 g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 aetos-slide">
+                    <img src="/build/img/2.svg" alt="SLide Image" class="img-fluid">
+                    <div>
+                        <h5 class="text-dark fw-bold text-center">Helmet</h5>
+                        <p class="fs-5 text-white text-uppercase fw-bold text-center">Warrior</p>
+                    </div>
 
-                                <div class="d-flex slide align-items-center justify-content-center ">
-                                    <img src="/build/img/poseidon.svg" alt="Slide Icon" style="width: 150px; height: 150px;" class="slide__img">
+                    <div class="actions">
+                        <a href="#" class="btn btn-lg btn-dark text-uppercase fw-bold rounded-0 w-100 mb-3">Update Slide</a>
+                        <form class="w-100">
+                            <input type="hidden" name="id">
+                            <input type="hidden" name="type">
+                            <input type="submit" value="Delete" class="btn btn-lg btn-danger text-uppercase fw-bold rounded-0 w-100">
+                        </form>
+                    </div>
+                </div>
 
-                                    <div class="slide__info">
-                                        <h3 class="text-dark fs-3 fw-bold">Trident</h2>
-                                            <h4 class="text-white fs-2 fw-bold text-uppercase">Balance</h4>
-                                    </div>
+                <div class="bg-primary p-4 g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 aetos-slide">
+                    <img src="/build/img/5.svg" alt="SLide Image" class="img-fluid">
+                    <div>
+                        <h5 class="text-dark fw-bold text-center">Bident</h5>
+                        <p class="fs-5 text-white text-uppercase fw-bold text-center">Wealth</p>
+                    </div>
 
-                                </div>
-                            </td>
+                    <div class="actions">
+                        <a href="#" class="btn btn-lg btn-dark text-uppercase fw-bold rounded-0 w-100 mb-3">Update Slide</a>
+                        <form class="w-100">
+                            <input type="hidden" name="id">
+                            <input type="hidden" name="type">
+                            <input type="submit" value="Delete" class="btn btn-lg btn-danger text-uppercase fw-bold rounded-0 w-100">
+                        </form>
+                    </div>
+                </div>
 
-                            <td>
-                                <a href="#" class="btn btn-lg btn-outline-primary rounded-0 text-uppercase fw-bold mb-3 w-100">Update Slide</a>
-                                <form>
-                                    <input type="hidden" name="id">
-                                    <button type="submit" class="btn btn-lg btn-outline-danger rounded-0 text-uppercase fw-bold mb-3 w-100">Delete Slide</button>
-                                </form>
-                            </td>
-                        </tr><!-- tr -->
-
-                        <tr>
-                            <td class="bg-primary">
-
-                                <div class="d-flex slide align-items-center justify-content-center ">
-                                    <img src="/build/img/2.svg" alt="Slide Icon" style="width: 150px; height: 150px;" class="slide__img">
-
-                                    <div class="slide__info">
-                                        <h3 class="text-dark fs-3 fw-bold">Helmet</h2>
-                                            <h4 class="text-white fs-2 fw-bold text-uppercase">Warrior</h4>
-                                    </div>
-
-                                </div>
-                            </td>
-
-                            <td>
-                                <a href="#" class="btn btn-lg btn-outline-primary rounded-0 text-uppercase fw-bold mb-3 w-100">Update Slide</a>
-                                <form>
-                                    <input type="hidden" name="id">
-                                    <button type="submit" class="btn btn-lg btn-outline-danger rounded-0 text-uppercase fw-bold mb-3 w-100">Delete Slide</button>
-                                </form>
-                            </td>
-                        </tr><!-- tr -->
-
-                    </tbody><!-- tbody -->
-                </table><!-- table -->
             </div>
 
-        </div>
-
-        <!-- Services -->
-        <div class="tab-pane fade" id="pills-services" role="tabpanel" aria-labelledby="pills-services-tab" tabindex="0">
-            <h2 class=" py-5 text-dark fw-bolder text-center bg-white">Services</h2>
-
-            <div class="d-grid d-md-flex my-3">
-                <a href="#" class="btn btn-lg btn-outline-primary rounded-0  text-uppercase fw-bold">Add Service</a>
-            </div>
-
-            <div class="table-responsive-md mt-3">
-                <table class="table table-hover align-middle">
-                    <thead>
-                        <tr class="text-center">
-                            <th scope="col" class="text-uppercase">Title</th>
-                            <th scope="col" class="text-uppercase">Description</th>
-                            <th scope="col" class="text-uppercase">Image</th>
-                            <th scope="col" class="text-uppercase">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Service 1</th>
-                            <td>Anim cupidatat nulla esse nulla proident tempor dolore nostrud ex.</td>
-                            <td>
-                                <picture>
-                                    <source srcset="/build/img/identity-1.avif" type="image/avif">
-                                    <source srcset="/build/img/identity-1.webp" type="image/webp">
-                                    <source srcset="/build/img/identity-1.jpg" type="image/jpeg">
-                                    <img loading="lazy" src="/build/img/identity-1.jpg" alt="Service Image" width="180">
-                                </picture>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-lg btn-outline-primary rounded-0 fw-bold text-uppercase w-100 mb-3">Update Service</a>
-                                <form>
-                                    <input type="hidden" name="id">
-                                    <button type="button" class="btn btn-lg btn-outline-danger rounded-0 text-uppercase fw-bold w-100">Delete Service</button>
-                                </form>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Service 2</th>
-                            <td>Id veniam incididunt mollit officia enim reprehenderit sit duis incididunt enim sint eiusmod.</td>
-                            <td>
-                                <picture>
-                                    <source srcset="/build/img/identity-2.avif" type="image/avif">
-                                    <source srcset="/build/img/identity-2.webp" type="image/webp">
-                                    <source srcset="/build/img/identity-2.jpg" type="image/jpeg">
-                                    <img loading="lazy" src="/build/img/identity-2.jpg" alt="Service Image" width="180">
-                                </picture>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-lg btn-outline-primary rounded-0 fw-bold text-uppercase w-100 mb-3">Update Service</a>
-                                <form>
-                                    <input type="hidden" name="id">
-                                    <button type="button" class="btn btn-lg btn-outline-danger rounded-0 text-uppercase fw-bold w-100">Delete Service</button>
-                                </form>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <th scope="row">Service 3</th>
-                            <td>Incididunt consectetur eiusmod sunt enim labore laborum sunt reprehenderit adipisicing ullamco.</td>
-                            <td>
-                                <picture>
-                                    <source srcset="/build/img/identity-3.avif" type="image/avif">
-                                    <source srcset="/build/img/identity-3.webp" type="image/webp">
-                                    <source srcset="/build/img/identity-3.jpg" type="image/jpeg">
-                                    <img loading="lazy" src="/build/img/identity-3.jpg" alt="Service Image" width="180">
-                                </picture>
-                            </td>
-                            <td>
-                                <a href="#" class="btn btn-lg btn-outline-primary rounded-0 fw-bold text-uppercase w-100 mb-3">Update Service</a>
-                                <form>
-                                    <input type="hidden" name="id">
-                                    <button type="button" class="btn btn-lg btn-outline-danger rounded-0 text-uppercase fw-bold w-100">Delete Service</button>
-                                </form>
-                            </td>
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div> <!-- .table-responsive -->
-
-        </div>
-
-        <!-- Works -->
-        <div class="tab-pane fade" id="pills-works" role="tabpanel" aria-labelledby="pills-works-tab" tabindex="0">
-            <h2 class=" py-5 text-dark fw-bolder text-center bg-white">Works</h2>
-        </div>
-
-        <!-- Works -->
-        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
-            <h2 class=" py-5 text-dark fw-bolder text-center bg-white">Contact Info</h2>
         </div>
 
     </div>
 
+</div>
+
+<div class="container-xl">
+    <!-- Services -->
+    <div class="tab-pane fade" id="pills-services" role="tabpanel" aria-labelledby="pills-services-tab" tabindex="0">
+        <h2 class=" py-5 text-dark fw-bolder text-center bg-white">Services</h2>
+
+        <div class="d-grid d-md-flex my-3">
+            <a href="#" class="btn btn-lg btn-outline-primary rounded-0  text-uppercase fw-bold">Add Service</a>
+        </div>
+
+        <div class="table-responsive-md mt-3">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col" class="text-uppercase">Title</th>
+                        <th scope="col" class="text-uppercase">Description</th>
+                        <th scope="col" class="text-uppercase">Image</th>
+                        <th scope="col" class="text-uppercase">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Service 1</th>
+                        <td>Anim cupidatat nulla esse nulla proident tempor dolore nostrud ex.</td>
+                        <td>
+                            <picture>
+                                <source srcset="/build/img/identity-1.avif" type="image/avif">
+                                <source srcset="/build/img/identity-1.webp" type="image/webp">
+                                <source srcset="/build/img/identity-1.jpg" type="image/jpeg">
+                                <img loading="lazy" src="/build/img/identity-1.jpg" alt="Service Image" width="180">
+                            </picture>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-lg btn-outline-primary rounded-0 fw-bold text-uppercase w-100 mb-3">Update Service</a>
+                            <form>
+                                <input type="hidden" name="id">
+                                <button type="button" class="btn btn-lg btn-outline-danger rounded-0 text-uppercase fw-bold w-100">Delete Service</button>
+                            </form>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Service 2</th>
+                        <td>Id veniam incididunt mollit officia enim reprehenderit sit duis incididunt enim sint eiusmod.</td>
+                        <td>
+                            <picture>
+                                <source srcset="/build/img/identity-2.avif" type="image/avif">
+                                <source srcset="/build/img/identity-2.webp" type="image/webp">
+                                <source srcset="/build/img/identity-2.jpg" type="image/jpeg">
+                                <img loading="lazy" src="/build/img/identity-2.jpg" alt="Service Image" width="180">
+                            </picture>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-lg btn-outline-primary rounded-0 fw-bold text-uppercase w-100 mb-3">Update Service</a>
+                            <form>
+                                <input type="hidden" name="id">
+                                <button type="button" class="btn btn-lg btn-outline-danger rounded-0 text-uppercase fw-bold w-100">Delete Service</button>
+                            </form>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Service 3</th>
+                        <td>Incididunt consectetur eiusmod sunt enim labore laborum sunt reprehenderit adipisicing ullamco.</td>
+                        <td>
+                            <picture>
+                                <source srcset="/build/img/identity-3.avif" type="image/avif">
+                                <source srcset="/build/img/identity-3.webp" type="image/webp">
+                                <source srcset="/build/img/identity-3.jpg" type="image/jpeg">
+                                <img loading="lazy" src="/build/img/identity-3.jpg" alt="Service Image" width="180">
+                            </picture>
+                        </td>
+                        <td>
+                            <a href="#" class="btn btn-lg btn-outline-primary rounded-0 fw-bold text-uppercase w-100 mb-3">Update Service</a>
+                            <form>
+                                <input type="hidden" name="id">
+                                <button type="button" class="btn btn-lg btn-outline-danger rounded-0 text-uppercase fw-bold w-100">Delete Service</button>
+                            </form>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div> <!-- .table-responsive -->
+
+    </div>
+</div>
+
+<div class="container-xl">
+    <!-- Works -->
+    <div class="tab-pane fade" id="pills-works" role="tabpanel" aria-labelledby="pills-works-tab" tabindex="0">
+        <h2 class=" py-5 text-dark fw-bolder text-center bg-white">Works</h2>
+        <div class="my-3 d-grid-d-md-flex">
+            <a href="#" class="btn btn-lg btn-outline-primary rounded-0 text-uppercase fw-bold">Add Work</a>
+        </div>
+
+        <div class="table-responsive-md">
+            <table class="table table-hover align-middle">
+                <thead>
+                    <tr class="tex-center">
+                        <th scope="col">Brand</th>
+                        <th scope="col">Client</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<div class="container-xl">
+    <!-- Contact Info -->
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+        <h2 class=" py-5 text-dark fw-bolder text-center bg-white">Contact Info</h2>
+    </div>
 </div>
 
 <?php incluirTemplate('footer'); ?>

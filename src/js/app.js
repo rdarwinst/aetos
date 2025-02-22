@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     changeNavColor();
     goToHomeIcon();
     closeOffCanvas();
+    closeAdminPanel();
     swiperInit();
     modalInfo();
 
@@ -149,6 +150,19 @@ function closeOffCanvas() {
         })
     });
 }
+function closeAdminPanel() {
+    const adminPanel = document.querySelector('#adminPanel');
+    const navLinks = document.querySelectorAll('.offcanvas-body .nav-pills .nav-link');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const offcanvas = bootstrap.Offcanvas.getInstance(adminPanel);
+            if (offcanvas) {
+                offcanvas.hide();
+            }
+        })
+    });
+}
 
 function swiperInit() {
     const swiper = document.querySelector('.swiper');
@@ -186,24 +200,28 @@ function swiperInit() {
 
 function modalInfo() {
     const buttons = document.querySelectorAll('.work button');
-    const modal = document.querySelector('#projectModal');
-    const modalTitle = modal.querySelector('.modal-title');
-    const modalImg = modal.querySelector('picture img');
 
-    buttons.forEach(button => {
-        button.addEventListener('click', function (e) {
-            const workInfo = this.closest('.work__info');
-            const title = workInfo.querySelector('.work__title').textContent;
-            // const description = workInfo.querySelector('.work__description');
-            const imgSrc = workInfo.previousElementSibling.querySelector('img').src;
-            const imgSrcSet = workInfo.previousElementSibling.querySelectorAll('source');
 
-            modalTitle.textContent = title;
-            modalImg.src = imgSrc;
-            imgSrcSet.forEach((source, index) => {
-                modal.querySelectorAll('picture img')[index].srcset = source.srcset;
+    if (buttons.length > 0) {
+        const modal = document.querySelector('#projectModal');
+        const modalTitle = modal.querySelector('.modal-title');
+        const modalImg = modal.querySelector('picture img');
+        
+        buttons.forEach(button => {
+            button.addEventListener('click', function (e) {
+                const workInfo = this.closest('.work__info');
+                const title = workInfo.querySelector('.work__title').textContent;
+                // const description = workInfo.querySelector('.work__description');
+                const imgSrc = workInfo.previousElementSibling.querySelector('img').src;
+                const imgSrcSet = workInfo.previousElementSibling.querySelectorAll('source');
+
+                modalTitle.textContent = title;
+                modalImg.src = imgSrc;
+                imgSrcSet.forEach((source, index) => {
+                    modal.querySelectorAll('picture img')[index].srcset = source.srcset;
+                });
+
             });
-
         });
-    });
+    }
 }
