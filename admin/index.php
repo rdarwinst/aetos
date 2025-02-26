@@ -1,12 +1,38 @@
 <?php
 
+use App\Services;
+use App\Slider;
+
 require '../includes/app.php';
+
+$slider = Slider::all();
+$services = Services::all();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    $id = $_POST['id'];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+
+    if ($id) {
+        $type = $_POST['type'];
+        if (validarTipoContenido($type)) {
+            if ($type === 'slide') {
+                $slide = Slider::find($id);
+                $slide->eliminar();
+            }
+            if ($type === 'service') {
+                $services = Services::find($id);
+                $services->eliminar();
+            }
+        }
+    }
+}
 
 incluirTemplate('header'); ?>
 <!-- Navegacion Principal -->
-<nav class="navbar navbar-expand-md py-3 shadow" data-bs-theme="light">
+<nav class="navbar navbar-expand-md py-3 shadow" data-bs-theme="dark">
     <div class="container-fluid">
-        <a href="/admin" class="navbar-brand">
+        <a href="/" class="navbar-brand">
             <img src="/build/img/logo-azul.svg" alt="Logo Aetos" width="150">
         </a>
         <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#mainMenu" aria-controls="mainMenu" aria-expanded="false" aria-label="Menu Mobile">
@@ -33,7 +59,7 @@ incluirTemplate('header'); ?>
 <!-- AdminPanel -->
 <div class="offcanvas offcanvas-start bg-primary" tabindex="-1" id="adminPanel" aria-labelledby="adminPanelLabel">
     <div class="offcanvas-header" data-bs-theme="dark">
-        <img src="/build/img/logo-negro.svg" alt="Logo Aetos" width="150" class="img-fluid">
+        <a href="/admin/"><img src="/build/img/logo-negro.svg" alt="Logo Aetos" width="150" class="img-fluid"></a>
         <button type="button" class="btn-close" role="button" data-bs-dismiss="offcanvas"></button>
     </div>
     <div class="offcanvas-body d-flex flex-column justify-content-center">
@@ -80,199 +106,187 @@ incluirTemplate('header'); ?>
                 <a href="/admin/slider/agregar.php" class="btn btn-outline-primary btn-lg rounded-0 text-uppercase fw-bold">Add Slide</a>
             </div>
 
-            <div class="grid aetos-slider" style="--bs-gap: 1rem;">
+            <div class="grid aetos-slider my-3" style="--bs-gap: 1rem;">
 
 
-                <div class="bg-primary p-4 g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 aetos-slide">
-                    <img src="/build/img/zeus.svg" alt="SLide Image" class="img-fluid">
-                    <div>
-                        <h5 class="text-dark fw-bold text-center">Ray</h5>
-                        <p class="fs-5 text-white text-uppercase fw-bold text-center">Authority</p>
+                <?php foreach ($slider as $slide): ?>
+                    <div class="bg-primary p-4 g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 aetos-slide">
+                        <img src="/uploads/images/<?php echo s($slide->image); ?>" alt="<?php echo s($slide->title); ?> Icon" title="<?php echo s($slide->title); ?> Icon" class="img-fluid">
+                        <div>
+                            <h5 class="text-dark fw-bold text-center"><?php echo s($slide->title); ?></h5>
+                            <p class="fs-5 text-white text-uppercase fw-bold text-center"><?php echo s($slide->represents); ?></p>
+                        </div>
+
+                        <div class="actions">
+                            <a href="/admin/slider/actualizar.php?id=<?php echo s($slide->id); ?>" class="btn btn-lg btn-dark text-uppercase fw-bold rounded-0 w-100 mb-3">Update Slide</a>
+                            <form method="POST" class="w-100">
+                                <input type="hidden" name="id" value="<?php echo s($slide->id); ?>">
+                                <input type="hidden" name="type" value="slide">
+                                <input type="submit" value="Delete Slide" class="btn btn-lg btn-danger text-uppercase fw-bold rounded-0 w-100">
+                            </form>
+                        </div>
                     </div>
 
+                <?php endforeach; ?>
+            </div>
+
+        </div>
+
+        <!-- Services -->
+        <div class="tab-pane fade" id="pills-services" role="tabpanel" aria-labelledby="pills-services-tab" tabindex="0">
+            <h2 class=" py-5 text-dark fw-bolder text-center bg-white">Services</h2>
+
+            <div class="d-grid d-md-flex my-3">
+                <a href="/admin/services/agregar.php" class="btn btn-lg btn-outline-primary rounded-0  text-uppercase fw-bold">Add Service</a>
+            </div>
+
+            <div class="grid my-3 aetos__services">
+
+                <?php foreach ($services as $service): ?>
+                    <div class="g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 bg-primary aetos-service">
+                        <img src="/uploads/images/<?php echo s($service->image); ?>" alt="<?php echo s($service->name); ?> Image" class="img-fluid object-fit-cover">
+                        <div class="service_info">
+                            <h5 class="fw-bold text-uppercase"><?php echo s($service->name); ?></h5>
+                            <p class="fw-lighter"><?php echo s($service->description); ?></p>
+                        </div>
+                        <div class="actions">
+                            <a href="/admin/services/actualizar.php?id=<?php echo s($service->id); ?>" class="btn btn-lg btn-dark rounded-0 fw-bold text-uppercase w-100 mb-3">Update Service</a>
+                            <form method="post" class="w-100">
+                                <input type="hidden" name="id" value="<?php echo s($service->id); ?>">
+                                <input type="hidden" name="type" value="service">
+                                <input type="submit" value="Delete Service" class="btn btn-lg btn-danger rounded-0 text-uppercase fw-bold w-100">
+                            </form>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+        </div>
+
+        <!-- Works -->
+        <div class="tab-pane fade" id="pills-works" role="tabpanel" aria-labelledby="pills-works-tab" tabindex="0">
+            <h2 class=" py-5 text-dark fw-bolder text-center bg-white">Works</h2>
+            <div class="my-3 d-grid-d-md-flex">
+                <a href="/admin/portfolio/agregar.php" class="btn btn-lg btn-outline-primary rounded-0 text-uppercase fw-bold">Add Work</a>
+            </div>
+
+            <div class="grid my-3 aetos-works">
+
+                <div class="g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 bg-primary work">
+                    <picture>
+                        <source srcset="/build/img/galeria-1.avif" type="image/avif">
+                        <source srcset="/build/img/galeria-1.webp" type="image/webp">
+                        <source srcset="/build/img/galeria-1.jpg" type="image/jpeg">
+                        <img loading="lazy" class="img-fluid" src="/build/img/galeria-1.jpg" alt="Work Image">
+                    </picture>
+                    <div class="work-info">
+                        <h3 class="text-uppercase fw-bold">Work 1</h3>
+                        <p><strong>Brand:</strong> GrupoApp</p>
+                        <p><strong>Service:</strong> UX / UI</p>
+                    </div>
                     <div class="actions">
-                        <a href="#" class="btn btn-lg btn-dark text-uppercase fw-bold rounded-0 w-100 mb-3">Update Slide</a>
+                        <a href="#" class="btn btn-lg btn-dark btn rounded-0 fw-bold text-uppercase w-100 mb-3">Update Work</a>
                         <form class="w-100">
                             <input type="hidden" name="id">
-                            <input type="hidden" name="type">
-                            <input type="submit" value="Delete" class="btn btn-lg btn-danger text-uppercase fw-bold rounded-0 w-100">
+                            <input type="hidden" name="type" value="work">
+                            <input type="submit" value="Delete Work" class="btn btn-lg btn-danger rounded-0 fw-bold text-uppercase w-100">
                         </form>
                     </div>
                 </div>
 
-                <div class="bg-primary p-4 g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 aetos-slide">
-                    <img src="/build/img/poseidon.svg" alt="SLide Image" class="img-fluid">
-                    <div>
-                        <h5 class="text-dark fw-bold text-center">Trident</h5>
-                        <p class="fs-5 text-white text-uppercase fw-bold text-center">Wealth</p>
+                <div class="g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 bg-primary work">
+                    <picture>
+                        <source srcset="/build/img/galeria-2.avif" type="image/avif">
+                        <source srcset="/build/img/galeria-2.webp" type="image/webp">
+                        <source srcset="/build/img/galeria-2.jpg" type="image/jpeg">
+                        <img loading="lazy" class="img-fluid" src="/build/img/galeria-2.jpg" alt="Work Image">
+                    </picture>
+                    <div class="work-info">
+                        <h3 class="text-uppercase fw-bold">Work 2</h3>
+                        <p><strong>Brand:</strong> GrupoApp</p>
+                        <p><strong>Service:</strong> Web DEvelopment</p>
                     </div>
-
                     <div class="actions">
-                        <a href="#" class="btn btn-lg btn-dark text-uppercase fw-bold rounded-0 w-100 mb-3">Update Slide</a>
+                        <a href="#" class="btn btn-lg btn-dark btn rounded-0 fw-bold text-uppercase w-100 mb-3">Update Work</a>
                         <form class="w-100">
                             <input type="hidden" name="id">
-                            <input type="hidden" name="type">
-                            <input type="submit" value="Delete" class="btn btn-lg btn-danger text-uppercase fw-bold rounded-0 w-100">
+                            <input type="hidden" name="type" value="work">
+                            <input type="submit" value="Delete Work" class="btn btn-lg btn-danger rounded-0 fw-bold text-uppercase w-100">
                         </form>
                     </div>
                 </div>
 
-                <div class="bg-primary p-4 g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 aetos-slide">
-                    <img src="/build/img/2.svg" alt="SLide Image" class="img-fluid">
-                    <div>
-                        <h5 class="text-dark fw-bold text-center">Helmet</h5>
-                        <p class="fs-5 text-white text-uppercase fw-bold text-center">Warrior</p>
+                <div class="g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 bg-primary work">
+                    <picture>
+                        <source srcset="/build/img/galeria-3.avif" type="image/avif">
+                        <source srcset="/build/img/galeria-3.webp" type="image/webp">
+                        <source srcset="/build/img/galeria-3.jpg" type="image/jpeg">
+                        <img loading="lazy" class="img-fluid" src="/build/img/galeria-3.jpg" alt="Work Image">
+                    </picture>
+                    <div class="work-info">
+                        <h3 class="text-uppercase fw-bold">Work 3</h3>
+                        <p><strong>Brand:</strong> GrupoApp</p>
+                        <p><strong>Service:</strong> Branding DIgital</p>
                     </div>
-
                     <div class="actions">
-                        <a href="#" class="btn btn-lg btn-dark text-uppercase fw-bold rounded-0 w-100 mb-3">Update Slide</a>
+                        <a href="#" class="btn btn-lg btn-dark btn rounded-0 fw-bold text-uppercase w-100 mb-3">Update Work</a>
                         <form class="w-100">
                             <input type="hidden" name="id">
-                            <input type="hidden" name="type">
-                            <input type="submit" value="Delete" class="btn btn-lg btn-danger text-uppercase fw-bold rounded-0 w-100">
+                            <input type="hidden" name="type" value="work">
+                            <input type="submit" value="Delete Work" class="btn btn-lg btn-danger rounded-0 fw-bold text-uppercase w-100">
                         </form>
                     </div>
                 </div>
 
-                <div class="bg-primary p-4 g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 aetos-slide">
-                    <img src="/build/img/5.svg" alt="SLide Image" class="img-fluid">
-                    <div>
-                        <h5 class="text-dark fw-bold text-center">Bident</h5>
-                        <p class="fs-5 text-white text-uppercase fw-bold text-center">Wealth</p>
-                    </div>
-
-                    <div class="actions">
-                        <a href="#" class="btn btn-lg btn-dark text-uppercase fw-bold rounded-0 w-100 mb-3">Update Slide</a>
-                        <form class="w-100">
-                            <input type="hidden" name="id">
-                            <input type="hidden" name="type">
-                            <input type="submit" value="Delete" class="btn btn-lg btn-danger text-uppercase fw-bold rounded-0 w-100">
-                        </form>
-                    </div>
-                </div>
 
             </div>
 
         </div>
 
-    </div>
+        <!-- Contact Info -->
+        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+            <h2 class=" py-5 text-dark fw-bolder text-center bg-white">About Aëtos</h2>
 
-</div>
-
-<div class="container-xl">
-    <!-- Services -->
-    <div class="tab-pane fade" id="pills-services" role="tabpanel" aria-labelledby="pills-services-tab" tabindex="0">
-        <h2 class=" py-5 text-dark fw-bolder text-center bg-white">Services</h2>
-
-        <div class="d-grid d-md-flex my-3">
-            <a href="#" class="btn btn-lg btn-outline-primary rounded-0  text-uppercase fw-bold">Add Service</a>
-        </div>
-
-        <div class="table-responsive-md mt-3">
-            <table class="table table-hover align-middle">
-                <thead>
-                    <tr class="text-center">
-                        <th scope="col" class="text-uppercase">Title</th>
-                        <th scope="col" class="text-uppercase">Description</th>
-                        <th scope="col" class="text-uppercase">Image</th>
-                        <th scope="col" class="text-uppercase">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Service 1</th>
-                        <td>Anim cupidatat nulla esse nulla proident tempor dolore nostrud ex.</td>
-                        <td>
-                            <picture>
-                                <source srcset="/build/img/identity-1.avif" type="image/avif">
-                                <source srcset="/build/img/identity-1.webp" type="image/webp">
-                                <source srcset="/build/img/identity-1.jpg" type="image/jpeg">
-                                <img loading="lazy" src="/build/img/identity-1.jpg" alt="Service Image" width="180">
-                            </picture>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-lg btn-outline-primary rounded-0 fw-bold text-uppercase w-100 mb-3">Update Service</a>
-                            <form>
-                                <input type="hidden" name="id">
-                                <button type="button" class="btn btn-lg btn-outline-danger rounded-0 text-uppercase fw-bold w-100">Delete Service</button>
-                            </form>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Service 2</th>
-                        <td>Id veniam incididunt mollit officia enim reprehenderit sit duis incididunt enim sint eiusmod.</td>
-                        <td>
-                            <picture>
-                                <source srcset="/build/img/identity-2.avif" type="image/avif">
-                                <source srcset="/build/img/identity-2.webp" type="image/webp">
-                                <source srcset="/build/img/identity-2.jpg" type="image/jpeg">
-                                <img loading="lazy" src="/build/img/identity-2.jpg" alt="Service Image" width="180">
-                            </picture>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-lg btn-outline-primary rounded-0 fw-bold text-uppercase w-100 mb-3">Update Service</a>
-                            <form>
-                                <input type="hidden" name="id">
-                                <button type="button" class="btn btn-lg btn-outline-danger rounded-0 text-uppercase fw-bold w-100">Delete Service</button>
-                            </form>
-                        </td>
-                    </tr>
-
-                    <tr>
-                        <th scope="row">Service 3</th>
-                        <td>Incididunt consectetur eiusmod sunt enim labore laborum sunt reprehenderit adipisicing ullamco.</td>
-                        <td>
-                            <picture>
-                                <source srcset="/build/img/identity-3.avif" type="image/avif">
-                                <source srcset="/build/img/identity-3.webp" type="image/webp">
-                                <source srcset="/build/img/identity-3.jpg" type="image/jpeg">
-                                <img loading="lazy" src="/build/img/identity-3.jpg" alt="Service Image" width="180">
-                            </picture>
-                        </td>
-                        <td>
-                            <a href="#" class="btn btn-lg btn-outline-primary rounded-0 fw-bold text-uppercase w-100 mb-3">Update Service</a>
-                            <form>
-                                <input type="hidden" name="id">
-                                <button type="button" class="btn btn-lg btn-outline-danger rounded-0 text-uppercase fw-bold w-100">Delete Service</button>
-                            </form>
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </div> <!-- .table-responsive -->
-
-    </div>
-</div>
-
-<div class="container-xl">
-    <!-- Works -->
-    <div class="tab-pane fade" id="pills-works" role="tabpanel" aria-labelledby="pills-works-tab" tabindex="0">
-        <h2 class=" py-5 text-dark fw-bolder text-center bg-white">Works</h2>
-        <div class="my-3 d-grid-d-md-flex">
-            <a href="#" class="btn btn-lg btn-outline-primary rounded-0 text-uppercase fw-bold">Add Work</a>
-        </div>
-
-        <div class="table-responsive-md">
-            <table class="table table-hover align-middle">
-                <thead>
-                    <tr class="tex-center">
-                        <th scope="col">Brand</th>
-                        <th scope="col">Client</th>
-                    </tr>
-                </thead>
-            </table>
+            <div class="table-responsive-md my-3">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr class="text-white">
+                            <th scope="col">Section</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Content</th>
+                            <th scope="col">Created</th>
+                            <th scope="col">Updated</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>About</td>
+                            <th scope="row">About Paragraph</th>
+                            <td>Consectetur pariatur velit voluptate laboris excepteur occaecat consequat velit excepteur. Deserunt ut proident consectetur voluptate ullamco dolor in voluptate mollit ipsum excepteur dolore amet et. Ea minim ex ex veniam non. Lorem ullamco labore veniam est pariatur officia ut ut sit officia.</td>
+                            <td><?php echo date('Y/m/d'); ?></td>
+                            <td><?php echo date('Y/m/d'); ?></td>
+                            <td>
+                                <a href="#" class="btn btn-lg btn-primary rounded-0 fw-bold text-uppercase w-100">Update</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Social Networks</td>
+                            <th scope="row">Instagram</th>
+                            <td><a href="https://instagram.com/aetos" class="link-primary text-decoration-none">https://instagram.com/aetos</a></td>
+                            <td><?php echo date('Y/m/d'); ?></td>
+                            <td><?php echo date('Y/m/d'); ?></td>
+                            <td>
+                                <a href="#" class="btn btn-lg btn-primary rounded-0 fw-bold text-uppercase w-100">Update</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
     </div>
-</div>
 
-<div class="container-xl">
-    <!-- Contact Info -->
-    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
-        <h2 class=" py-5 text-dark fw-bolder text-center bg-white">Contact Info</h2>
-    </div>
 </div>
 
 <?php incluirTemplate('footer'); ?>

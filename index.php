@@ -1,53 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php 
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Maqueta del sitio Aëtos">
-    <meta name="keywords" content="Branding, Web Site, Web Design, Marketing">
-    <title>Aëtos</title>
-    <link rel="icon" href="/build/img/isotipo.svg" type="image/x-icon">
+require './includes/app.php';
+incluirTemplate('header');
+?>
 
-    <!-- Tipografías -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;700;900&family=Nunito:wght@300;400;700;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@300;400;700;900&family=Nunito:wght@300;400;700;900&display=swap">
-    </noscript>
-
-    <!-- Íconos -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    </noscript>
-
-    <!-- Animaciones -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    </noscript>
-
-    <!-- Swiper -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
-    </noscript>
-
-    <!-- CSS Propio -->
-    <link rel="stylesheet" href="build/css/app.css">
-
-    <link rel="prefetch" href="build/js/bundle.min.js">
-    <link rel="prefetch" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js">
-</head>
-
-<body class="bg-dark">
     <div class="navbar fixed-top" data-bs-theme="dark">
         <div class="container-fluid barra-navegacion">
             <a href="/" class="navbar-brand">
                 <img src="/build/img/logo-blanco.svg" alt="Logo Aëtos" width="150">
             </a>
-            <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle Navigation">
+            <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle Navigation" style="border: none; outline: none;">
                 <div class="dots">
                     <span class="dot" style="width: 14px; height: 14px; background-color: #FFFFFF; display: inline-block;"></span>
                     <span class="dot" style="width: 14px; height: 14px; background-color: #FFFFFF; display: inline-block;"></span>
@@ -282,81 +244,119 @@
                     <p>Clear Vision</p>
                     <h2 class="fw-bold">Build Your <span>Legacy</span></h2>
                     <p class="complementary">See how we allied with visionary teams to build brands that stand out and connected with their target audiences.</p>
-                    <div class="d-grid d-md-flex" style="margin-top: 5rem;">
+                    <div class="d-grid d-md-flex btn-container" style="margin-top: 5rem;">
                         <button type="button" class="btn btn-primary btn-lg rounded-0 fs-6 fw-bold text-uppercase" data-bs-toggle="modal" data-bs-target="#modalPortfolio">View Portfolio <i class="bi bi-eye-fill"></i></button>
                     </div>
                 </div>
+
                 <div class="col-md-5 order-1 order-md-2 subElement works">
-                    <div class="image-grid">
-                        <div class="row w-100 g-3">
-                            <div class="col-6 work">
-                                <picture>
-                                    <source srcset="/build/img/galeria-1.avif" type="image/avif">
-                                    <source srcset="/build/img/galeria-1.webp" type="image/webp">
-                                    <source srcset="/build/img/galeria-1.jpg" type="image/jpeg">
-                                    <img loading="lazy" width="200" height="300" src="/build/img/galeria-1.jpg" alt="Imagen Galería">
-                                </picture>
-                                <div class="work__info" data-work="1">
-                                    <h3 class="work__title">Work 1</h3>
-                                    <p class="work__description">Occaecat do ea Lorem proident consequat elit laborum Lorem exercitation aute voluptate fugiat quis nulla.</p>
-                                    <button type="button" class="btn btn-outline-dark btn-lg rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">See More</button>
+                    <div class="swiper" id="swiper-works">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <div class="grid">
+                                    <div class="g-col-6 work" style="background-image: url(/build/img/galeria-1.jpg);">
+                                        <div class="work__info">
+                                            <h3 class="work__title">Work 1</h3>
+                                            <p class="work__description">Qui nulla do officia cupidatat deserunt tempor Lorem occaecat nostrud id eiusmod incididunt exercitation.</p>
+                                            <button type="button" class="btn btn-lg btn-outline-dark rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">
+                                                See More
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="g-col-6 work" style="background-image: url(/build/img/galeria-2.jpg);">
+                                        <div class="work__info">
+                                            <h3 class="work__title">Work 2</h3>
+                                            <p class="work__description">Laborum occaecat velit ad quis in occaecat Lorem ea pariatur est elit.</p>
+                                            <button type="button" class="btn btn-lg btn-outline-dark rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">
+                                                See More
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="g-col-4 work" style="background-image: url(/build/img/galeria-3.jpg);">
+                                        <div class="work__info">
+                                            <h3 class="work__title">Work 3</h3>
+                                            <p class="work__description">Ullamco laborum adipisicing eiusmod irure dolor ea eu.</p>
+                                            <button type="button" class="btn btn-lg btn-outline-dark rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">
+                                                See More
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="g-col-4 work" style="background-image: url(/build/img/galeria-4.jpg);">
+                                        <div class="work__info">
+                                            <h3 class="work__title">Work 4</h3>
+                                            <p class="work__description">Consequat aute sint laborum elit.</p>
+                                            <button type="button" class="btn btn-lg btn-outline-dark rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">
+                                                See More
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="g-col-4 work" style="background-image: url(/build/img/galeria-5.jpg);">
+                                        <div class="work__info">
+                                            <h3 class="work__title">Work 5</h3>
+                                            <p class="work__description">Ea labore est consectetur ea sit commodo ipsum.</p>
+                                            <button type="button" class="btn btn-lg btn-outline-dark rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">
+                                                See More
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-6 work">
-                                <picture>
-                                    <source srcset="/build/img/galeria-2.avif" type="image/avif">
-                                    <source srcset="/build/img/galeria-2.webp" type="image/webp">
-                                    <source srcset="/build/img/galeria-2.jpg" type="image/jpeg">
-                                    <img loading="lazy" width="200" height="300" src="/build/img/galeria-2.jpg" alt="Imagen Galería">
-                                </picture>
-                                <div class="work__info" data-work="2">
-                                    <h3 class="work__title">Work 2</h3>
-                                    <p class="work__description">Non ullamco quis enim excepteur est.</p>
-                                    <button type="button" class="btn btn-outline-dark btn-lg rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">See More</button>
+
+                            <div class="swiper-slide">
+                                <div class="grid">
+                                    <div class="g-col-4 work" style="background-image: url(/build/img/galeria-3.jpg);">
+                                        <div class="work__info">
+                                            <h3 class="work__title">Work 3</h3>
+                                            <p class="work__description">Ullamco laborum adipisicing eiusmod irure dolor ea eu.</p>
+                                            <button type="button" class="btn btn-lg btn-outline-dark rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">
+                                                See More
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="g-col-4 work" style="background-image: url(/build/img/galeria-4.jpg);">
+                                        <div class="work__info">
+                                            <h3 class="work__title">Work 4</h3>
+                                            <p class="work__description">Consequat aute sint laborum elit.</p>
+                                            <button type="button" class="btn btn-lg btn-outline-dark rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">
+                                                See More
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="g-col-4 work" style="background-image: url(/build/img/galeria-5.jpg);">
+                                        <div class="work__info">
+                                            <h3 class="work__title">Work 5</h3>
+                                            <p class="work__description">Ea labore est consectetur ea sit commodo ipsum.</p>
+                                            <button type="button" class="btn btn-lg btn-outline-dark rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">
+                                                See More
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="g-col-6 work" style="background-image: url(/build/img/galeria-1.jpg);">
+                                        <div class="work__info">
+                                            <h3 class="work__title">Work 1</h3>
+                                            <p class="work__description">Qui nulla do officia cupidatat deserunt tempor Lorem occaecat nostrud id eiusmod incididunt exercitation.</p>
+                                            <button type="button" class="btn btn-lg btn-outline-dark rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">
+                                                See More
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="g-col-6 work" style="background-image: url(/build/img/galeria-2.jpg);">
+                                        <div class="work__info">
+                                            <h3 class="work__title">Work 2</h3>
+                                            <p class="work__description">Laborum occaecat velit ad quis in occaecat Lorem ea pariatur est elit.</p>
+                                            <button type="button" class="btn btn-lg btn-outline-dark rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">
+                                                See More
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+
                         </div>
-                        <div class="row w-100 g-3">
-                            <div class="col-4 work">
-                                <picture>
-                                    <source srcset="/build/img/galeria-3.avif" type="image/avif">
-                                    <source srcset="/build/img/galeria-3.webp" type="image/webp">
-                                    <source srcset="/build/img/galeria-3.jpg" type="image/jpeg">
-                                    <img loading="lazy" width="200" height="300" src="/build/img/galeria-3.jpg" alt="Imagen Galería">
-                                </picture>
-                                <div class="work__info" data-work="3">
-                                    <h3 class="work__title">Work 3</h3>
-                                    <p class="work__description">Elit magna laboris esse cillum adipisicing nulla reprehenderit proident cupidatat aute.</p>
-                                    <button type="button" class="btn btn-outline-dark btn-lg rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">See More</button>
-                                </div>
-                            </div>
-                            <div class="col-4 work">
-                                <picture>
-                                    <source srcset="/build/img/galeria-4.avif" type="image/avif">
-                                    <source srcset="/build/img/galeria-4.webp" type="image/webp">
-                                    <source srcset="/build/img/galeria-4.jpg" type="image/jpeg">
-                                    <img loading="lazy" width="200" height="300" src="/build/img/galeria-4.jpg" alt="Imagen Galería">
-                                </picture>
-                                <div class="work__info" data-work="4">
-                                    <h3 class="work__title">Work 4</h3>
-                                    <p class="work__description">Magna elit elit incididunt dolore dolor est consequat.</p>
-                                    <button type="button" class="btn btn-outline-dark btn-lg rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">See More</button>
-                                </div>
-                            </div>
-                            <div class="col-4 work">
-                                <picture>
-                                    <source srcset="/build/img/galeria-5.avif" type="image/avif">
-                                    <source srcset="/build/img/galeria-5.webp" type="image/webp">
-                                    <source srcset="/build/img/galeria-5.jpg" type="image/jpeg">
-                                    <img loading="lazy" width="200" height="300" src="/build/img/galeria-5.jpg" alt="Imagen Galería">
-                                </picture>
-                                <div class="work__info" data-work="5">
-                                    <h3 class="work__title">Work 5</h3>
-                                    <p class="work__description">Et elit commodo incididunt eiusmod adipisicing ea Lorem minim ad.</p>
-                                    <button type="button" class="btn btn-outline-dark btn-lg rounded-0 text-uppercase fw-bold" data-bs-toggle="modal" data-bs-target="#projectModal">See More</button>
-                                </div>
-                            </div>
-                        </div>
+
+                        <div class="swiper-pagination"></div>
+
                     </div>
                 </div>
             </div>
@@ -370,7 +370,7 @@
                 <div class="col-6 col-md-12">
                     <div class="row mt-3 mb-5 justify-content-center">
                         <div class="col-md-3 mb-3 m-md-0 subElement">
-                            <div class="card">
+                            <div class="card" data-bs-theme="light">
                                 <picture>
                                     <source srcset="/build/img/equipo-1.avif" type="image/avif">
                                     <source srcset="/build/img/equipo-1.webp" type="image/webp">
@@ -390,7 +390,7 @@
                             </div>
                         </div>
                         <div class="col-md-3 mb-3 m-md-0 subElement">
-                            <div class="card">
+                            <div class="card" data-bs-theme="light">
                                 <picture>
                                     <source srcset="/build/img/equipo-2.avif" type="image/avif">
                                     <source srcset="/build/img/equipo-2.webp" type="image/webp">
@@ -410,7 +410,7 @@
                             </div>
                         </div>
                         <div class="col-md-3 mb-3 m-md-0 subElement">
-                            <div class="card">
+                            <div class="card" data-bs-theme="light">
                                 <picture>
                                     <source srcset="/build/img/equipo-3.avif" type="image/avif">
                                     <source srcset="/build/img/equipo-3.webp" type="image/webp">
@@ -588,8 +588,4 @@
         </div>
     </div>
 
-    <script src="build/js/bundle.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
-</body>
-
-</html>
+<?php incluirTemplate('footer'); ?>

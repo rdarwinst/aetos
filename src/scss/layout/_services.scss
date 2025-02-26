@@ -73,6 +73,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all .3s ease;
+            color: $dark;
 
         }
 
@@ -80,11 +81,6 @@
             font-size: 3.4rem;
             text-transform: uppercase;
             font-weight: 700;
-        }
-
-        &__description {
-            color: $dark;
-            font-size: 2rem;
         }
 
         &:hover {

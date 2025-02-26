@@ -47,7 +47,7 @@ function buildcss(done) {
             suffix: '.min'
         }))
         .pipe(purgecss({
-            content: ['index.html', 'build/js/**/*.js'],
+            content: ['**/*.php', 'build/js/**/*.js'],
             safelist: {
                 standard: [
                     /^swiper/,

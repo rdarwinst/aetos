@@ -166,8 +166,9 @@ function closeAdminPanel() {
 
 function swiperInit() {
     const swiper = document.querySelector('.swiper');
+    const swiper2 = document.querySelector('#swiper-works');
 
-    if (swiper) {
+    if (swiper && swiper2) {
         const opciones = {
             loop: false,
             speed: 900,
@@ -195,6 +196,7 @@ function swiperInit() {
 
         };
         new Swiper('.swiper', opciones);
+        new Swiper('#swiper-works', opciones);
     }
 }
 

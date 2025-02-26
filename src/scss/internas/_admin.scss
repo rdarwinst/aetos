@@ -46,3 +46,95 @@
     }
 
 }
+
+.aetos-service {
+    position: relative;
+
+    img {
+        transition: filter .3s linear;
+    }
+
+    .service_info {
+        padding: 2rem 2rem 2rem 2rem;
+        text-align: center;
+        color: $dark;
+    }
+
+    .actions {
+        position: absolute;
+        inset: 0;
+        background-color: transparentize($light, .65%);
+        padding: 2rem 2rem 2rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all .3s ease;
+
+        @include media-breakpoint-up(md) {
+            visibility: hidden;
+            opacity: 0;
+        }
+    }
+
+    &:hover {
+        @include media-breakpoint-up(md) {
+            .actions {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            img {
+                filter: grayscale(1);
+            }
+        }
+    }
+
+    @include media-breakpoint-down(sm) {
+        img {
+            filter: grayscale(1);
+        }
+    }
+}
+
+.aetos-works {
+
+    .work {
+        position: relative;
+
+        &:hover {
+
+            @include media-breakpoint-up(md) {
+                .actions {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+
+    .work-info {
+        text-align: center;
+        padding: 2rem 2rem 2rem 2rem;
+        color: $dark;
+    }
+
+    .actions {
+        background-color: transparentize($dark, .3%);
+        position: absolute;
+        inset: 0;
+        padding: 2rem 2rem 2rem 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all .3s ease;
+
+        @include media-breakpoint-up(md) {
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+
+}
