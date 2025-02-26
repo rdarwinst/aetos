@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($_FILES["work"]["tmp_name"]["image"]) {
         $manager = new ImageManager(Driver::class);
-        $img = $manager->read($_FILES["work"]["tmp_name"]["image"])->coverDown(900, 900);
+        $img = $manager->read($_FILES["work"]["tmp_name"]["image"])->resizeDown(900, 900);
         $work->setImagen($nombreImagen);
     }
 
@@ -114,49 +114,8 @@ incluirTemplate('header');
     <div class="my-3 row">
         <div class="col-md-6 mx-auto">
             <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
-                <div class="mb-3">
-                    <label for="brand" class="form-label">Brand</label>
-                    <input type="text" name="work[brand]" value="<?php echo s($work->brand); ?>" id="brand" placeholder="Ex. GrupoApp" class="form-control rounded-0 <?php echo isset($errores['brand']) ? 'is-invalid' : ''; ?>">
-                    <div class="invalid-feedback"><?php echo s($errores['brand']) ?? 'This field cannot be empty. Please provide a brand name.'; ?></div>
-                    <div class="brandHelpBlock form-text">Please enter the brand name of the product or service.</div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="description" class="form-label">Description</label>
-                    <textarea name="work[description]" id="description" rows="3" class="form-control rounded-0 <?php echo isset($errores['description']) ? 'is-invalid' : ''; ?>" placeholder="Ex. Designed a new logo and developed brand guidelines."><?php echo s($work->description); ?></textarea>
-                    <div class="invalid-feedback">
-                        <?php echo s($errores['description']) ?? 'This field cannot be empty. Please provide a description of the work done.'; ?>
-                    </div>
-                    <div class="descriptionHelpBlock form-text">Please provide a detailed description of the work</div>
-                </div>
-                <div class="mb-3">
-                    <label for="country" class="form-label">Country</label>
-                    <input type="text" name="work[country]" value="<?php echo s($work->country); ?>" id="country" placeholder="Ex. Colombia" class="form-control rounded-0 <?php echo isset($errores['country']) ? 'is-invalid' : ''; ?>">
-                    <div class="invalid-feedback"><?php echo s($errores['country']) ?? 'This field cannot be empty. Please select a country.'; ?></div>
-                    <div class="countryHelpBlock form-text">Please select the country where the service was provided.</div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="image" class="form-label">Image</label>
-                    <input type="file" name="work[image]" id="image" class="form-control rounded-0 <?php echo isset($errores['image']) ? 'is-invalid' : ''; ?>" accept="image/jpeg, image/png">
-                    <div class="invalid-feedback"><?php echo s($errores['image']) ?? 'This field cannot be empty. Please upload an image.'; ?></div>
-                    <div class="imageHelpBlock form-text">Please upload an image related to the service provided.</div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="service" class="form-label">Services</label>
-                    <select name="work[service]" id="service" aria-label="Services provided" class="form-select rounded-0 <?php echo isset($errores['service']) ? 'is-invalid' : ''; ?>">
-                        <option value="" selected disabled>Select a service</option>
-                        <?php foreach ($services as $service): ?>
-                            <option <?php echo $work->service == $service->id ? 'selected' : ''; ?> value="<?php echo s($service->id); ?>"><?php echo s($service->name); ?></option>
-
-
-                        <?php endforeach; ?>
-                    </select>
-                    <div class="invalid-feedback"><?php echo $errores['service'] ?? 'Please select at least one service.'; ?></div>
-                    <div class="serviceHelpBlock form-text">Please select the services that were provided.</div>
-
-                </div>
+                
+                <?php include '../../includes/templates/form_works.php'; ?>
 
                 <div class="mb-3 d-grid d-md-flex">
                     <input type="submit" value="Add Work" class="btn btn-lg btn-primary rounded-0 fw-bold text-uppercase">

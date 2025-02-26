@@ -112,7 +112,7 @@ incluirTemplate('header');
 
     <div class="my-3 row">
         <div class="col-md-6 mx-auto">
-            <form method="post" novalidate enctype="multipart/form-data">
+            <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
 
                 <?php include '../../includes/templates/form_slider.php'; ?>
 

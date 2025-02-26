@@ -24,16 +24,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $slider->sincronizar($args);
 
-    $errores = $slider->validar();
-
+    
     $nombreImagen = md5(uniqid(rand(), true)) . ".png";
-
+    
     if ($_FILES["slider"]["tmp_name"]["image"]) {
         $manager = new ImageManager(Driver::class);
-        $img = $manager->read($_FILES["slider"]["tmp_name"]["image"])->scaleDown(900, 900);
+        $img = $manager->read($_FILES["slider"]["tmp_name"]["image"])->resizeDown(900, 900);
         $slider->setImagen($nombreImagen);
     }
-
+    
+    $errores = $slider->validar();
+    
     if (empty($errores)) {
         if ($_FILES["slider"]["tmp_name"]["image"]) {
             $img->save(IMAGES_URL . $nombreImagen);
@@ -118,7 +119,7 @@ incluirTemplate('header');
 
     <div class="my-3 row">
         <div class="col-md-6 mx-auto">
-            <form method="post" novalidate enctype="multipart/form-data">
+            <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
 
                 <?php include '../../includes/templates/form_slider.php'; ?>
 

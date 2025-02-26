@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($_FILES["service"]["tmp_name"]["image"]) {
         $manager = new ImageManager(Driver::class);
-        $img = $manager->read($_FILES["service"]["tmp_name"]["image"])->coverDown(1200, 720);
+        $img = $manager->read($_FILES["service"]["tmp_name"]["image"])->resizeDown(900, 900);
         $services->setImagen($nombreImagen);
     }
 

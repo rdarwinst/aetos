@@ -1,38 +1,46 @@
 <?php
 
+use App\Portfolio;
 use App\Services;
 use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\ImageManager;
 
 require '../../includes/app.php';
 
-$services = new Services;
-$errores = Services::getErrores();
+$id = $_GET['id'];
+$id = filter_var($id, FILTER_VALIDATE_INT);
+
+if (!$id) {
+    header('Location: /admin');
+    exit;
+}
+
+$services = Services::all();
+
+$work = Portfolio::find($id);
+$errores = Portfolio::getErrores();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $services = new Services($_POST['service']);
+    $args = $_POST['work'];
+
+    $work->sincronizar($args);
 
     $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
-    
-    if ($_FILES["service"]["tmp_name"]["image"]) {
+    if ($_FILES["work"]["tmp_name"]["image"]) {
         $manager = new ImageManager(Driver::class);
-        $img = $manager->read($_FILES["service"]["tmp_name"]["image"])->resizeDown(900, 900);
-        $services->setImagen($nombreImagen);
+        $img = $manager->read($_FILES["work"]["tmp_name"]["image"])->resizeDown(900, 900);
+        $work->setImagen($nombreImagen);
     }
-    
-    $errores = $services->validar();
+
+    $errores = $work->validar();
 
     if (empty($errores)) {
-
-        if (!is_dir(IMAGES_URL)) {
-            mkdir(IMAGES_URL, 0755, true);
+        if ($_FILES["work"]["tmp_name"]["image"]) {
+            $img->save(IMAGES_URL . $nombreImagen);
         }
-
-        $img->save(IMAGES_URL . $nombreImagen);
-
-        $services->guardar();
+        $work->guardar();
     }
 }
 
@@ -104,7 +112,7 @@ incluirTemplate('header');
 
 
 <main class="py-5 container-xl">
-    <h1 class="py-5 text-center bg-white text-dark fw-bold">Add Service</h1>
+    <h1 class="py-5 text-center bg-white text-dark fw-bold">Update Work</h1>
 
     <div class="my-3 d-grid d-md-flex">
         <a href="/admin/" class="btn btn-lg btn-primary rounded-0 fw-bold"><i class="bi bi-arrow-left"></i> Back</a>
@@ -113,13 +121,16 @@ incluirTemplate('header');
     <div class="my-3 row">
         <div class="col-md-6 mx-auto">
             <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
-                <?php include '../../includes/templates/form_services.php'; ?>
+
+                <?php include '../../includes/templates/form_works.php'; ?>
+
                 <div class="mb-3 d-grid d-md-flex">
-                    <input type="submit" value="Add Service" class="btn btn-lg btn-primary rounded-0 fw-bold text-uppercase">
+                    <input type="submit" value="Update Work" class="btn btn-lg btn-primary rounded-0 fw-bold text-uppercase">
                 </div>
             </form>
         </div>
     </div>
 </main>
 
-<?php incluirTemplate('footer'); ?>
+
+<?php incluirTemplate('footer'); ?>;

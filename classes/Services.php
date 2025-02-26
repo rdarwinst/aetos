@@ -11,6 +11,8 @@ class Services extends  ActiveRecord
     public $name;
     public $description;
     public $image;
+    public $created;
+    public $updated;
 
     public function __construct($args = [])
     {

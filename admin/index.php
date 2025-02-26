@@ -1,5 +1,7 @@
 <?php
 
+use App\About;
+use App\Portfolio;
 use App\Services;
 use App\Slider;
 
@@ -7,6 +9,8 @@ require '../includes/app.php';
 
 $slider = Slider::all();
 $services = Services::all();
+$works = Portfolio::all();
+$about = About::all();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -23,6 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($type === 'service') {
                 $services = Services::find($id);
                 $services->eliminar();
+            }
+            if ($type === 'work') {
+                $works = Portfolio::find($id);
+                $works->eliminar();
             }
         }
     }
@@ -172,71 +180,25 @@ incluirTemplate('header'); ?>
 
             <div class="grid my-3 aetos-works">
 
-                <div class="g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 bg-primary work">
-                    <picture>
-                        <source srcset="/build/img/galeria-1.avif" type="image/avif">
-                        <source srcset="/build/img/galeria-1.webp" type="image/webp">
-                        <source srcset="/build/img/galeria-1.jpg" type="image/jpeg">
-                        <img loading="lazy" class="img-fluid" src="/build/img/galeria-1.jpg" alt="Work Image">
-                    </picture>
-                    <div class="work-info">
-                        <h3 class="text-uppercase fw-bold">Work 1</h3>
-                        <p><strong>Brand:</strong> GrupoApp</p>
-                        <p><strong>Service:</strong> UX / UI</p>
+                <?php foreach ($works as $work): ?>
+                    <div class="g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 bg-primary work">
+                        <img src="/uploads/images/<?php echo s($work->image); ?>" alt="<?php echo s($work->title); ?> Image" class="img-fluid object-fit-cover">
+                        <div class="work-info">
+                            <h3 class="text-uppercase fw-bold"><?php echo s($work->title); ?></h3>
+                            <p><strong>Brand: </strong><?php echo s($work->brand); ?></p>
+                            <p class="description"><strong>Description: </strong><?php echo s($work->description); ?></p>
+                        </div>
+                        <div class="actions">
+                            <a href="/admin/portfolio/actualizar.php?id=<?php echo s($work->id); ?>" class="btn btn-lg btn-dark btn rounded-0 fw-bold text-uppercase w-100 mb-3">Update Work</a>
+                            <form method="post" class="w-100">
+                                <input type="hidden" name="id" value="<?php echo s($work->id); ?>">
+                                <input type="hidden" name="type" value="work">
+                                <input type="submit" value="Delete Work" class="btn btn-lg btn-danger rounded-0 fw-bold text-uppercase w-100">
+                            </form>
+                        </div>
                     </div>
-                    <div class="actions">
-                        <a href="#" class="btn btn-lg btn-dark btn rounded-0 fw-bold text-uppercase w-100 mb-3">Update Work</a>
-                        <form class="w-100">
-                            <input type="hidden" name="id">
-                            <input type="hidden" name="type" value="work">
-                            <input type="submit" value="Delete Work" class="btn btn-lg btn-danger rounded-0 fw-bold text-uppercase w-100">
-                        </form>
-                    </div>
-                </div>
+                <?php endforeach; ?>
 
-                <div class="g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 bg-primary work">
-                    <picture>
-                        <source srcset="/build/img/galeria-2.avif" type="image/avif">
-                        <source srcset="/build/img/galeria-2.webp" type="image/webp">
-                        <source srcset="/build/img/galeria-2.jpg" type="image/jpeg">
-                        <img loading="lazy" class="img-fluid" src="/build/img/galeria-2.jpg" alt="Work Image">
-                    </picture>
-                    <div class="work-info">
-                        <h3 class="text-uppercase fw-bold">Work 2</h3>
-                        <p><strong>Brand:</strong> GrupoApp</p>
-                        <p><strong>Service:</strong> Web DEvelopment</p>
-                    </div>
-                    <div class="actions">
-                        <a href="#" class="btn btn-lg btn-dark btn rounded-0 fw-bold text-uppercase w-100 mb-3">Update Work</a>
-                        <form class="w-100">
-                            <input type="hidden" name="id">
-                            <input type="hidden" name="type" value="work">
-                            <input type="submit" value="Delete Work" class="btn btn-lg btn-danger rounded-0 fw-bold text-uppercase w-100">
-                        </form>
-                    </div>
-                </div>
-
-                <div class="g-col-12 g-col-sm-6 g-col-md-4 g-col-lg-3 bg-primary work">
-                    <picture>
-                        <source srcset="/build/img/galeria-3.avif" type="image/avif">
-                        <source srcset="/build/img/galeria-3.webp" type="image/webp">
-                        <source srcset="/build/img/galeria-3.jpg" type="image/jpeg">
-                        <img loading="lazy" class="img-fluid" src="/build/img/galeria-3.jpg" alt="Work Image">
-                    </picture>
-                    <div class="work-info">
-                        <h3 class="text-uppercase fw-bold">Work 3</h3>
-                        <p><strong>Brand:</strong> GrupoApp</p>
-                        <p><strong>Service:</strong> Branding DIgital</p>
-                    </div>
-                    <div class="actions">
-                        <a href="#" class="btn btn-lg btn-dark btn rounded-0 fw-bold text-uppercase w-100 mb-3">Update Work</a>
-                        <form class="w-100">
-                            <input type="hidden" name="id">
-                            <input type="hidden" name="type" value="work">
-                            <input type="submit" value="Delete Work" class="btn btn-lg btn-danger rounded-0 fw-bold text-uppercase w-100">
-                        </form>
-                    </div>
-                </div>
 
 
             </div>
@@ -248,38 +210,30 @@ incluirTemplate('header'); ?>
             <h2 class=" py-5 text-dark fw-bolder text-center bg-white">About Aëtos</h2>
 
             <div class="table-responsive-md my-3">
-                <table class="table table-hover align-middle">
+                <table class="table table-hover align-middle contact-info">
                     <thead>
                         <tr class="text-white">
                             <th scope="col">Section</th>
                             <th scope="col">Title</th>
                             <th scope="col">Content</th>
-                            <th scope="col">Created</th>
-                            <th scope="col">Updated</th>
+                            <th scope="col">Creation Date</th>
+                            <th scope="col">Last Updated</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>About</td>
-                            <th scope="row">About Paragraph</th>
-                            <td>Consectetur pariatur velit voluptate laboris excepteur occaecat consequat velit excepteur. Deserunt ut proident consectetur voluptate ullamco dolor in voluptate mollit ipsum excepteur dolore amet et. Ea minim ex ex veniam non. Lorem ullamco labore veniam est pariatur officia ut ut sit officia.</td>
-                            <td><?php echo date('Y/m/d'); ?></td>
-                            <td><?php echo date('Y/m/d'); ?></td>
-                            <td>
-                                <a href="#" class="btn btn-lg btn-primary rounded-0 fw-bold text-uppercase w-100">Update</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Social Networks</td>
-                            <th scope="row">Instagram</th>
-                            <td><a href="https://instagram.com/aetos" class="link-primary text-decoration-none">https://instagram.com/aetos</a></td>
-                            <td><?php echo date('Y/m/d'); ?></td>
-                            <td><?php echo date('Y/m/d'); ?></td>
-                            <td>
-                                <a href="#" class="btn btn-lg btn-primary rounded-0 fw-bold text-uppercase w-100">Update</a>
-                            </td>
-                        </tr>
+                        <?php foreach ($about as $content): ?>
+                            <tr>
+                                <td><?php echo s($content->section); ?></td>
+                                <th scope="row"><?php echo s($content->title); ?></th>
+                                <td><?php echo s($content->content); ?></td>
+                                <td><?php echo s($content->created); ?></td>
+                                <td><?php echo s($content->updated); ?></td>
+                                <td>
+                                    <a href="/admin/about/actualizar.php?id=<?php echo s($content->id); ?>" class="btn btn-lg btn-primary rounded-0 fw-bold text-uppercase w-100">Update</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
                 </table>
             </div>

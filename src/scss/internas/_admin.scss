@@ -111,6 +111,14 @@
                 }
             }
         }
+
+        .description {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            line-clamp: 3;
+            -webkit-line-clamp: 3;
+        }
     }
 
     .work-info {
@@ -137,4 +145,15 @@
     }
 
 
+}
+
+.contact-info {
+
+    .content {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        line-clamp: 3;
+        -webkit-line-clamp: 3;
+    }
 }

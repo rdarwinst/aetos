@@ -5,27 +5,32 @@ namespace App;
 class Portfolio extends ActiveRecord
 {
     protected static $tabla = 'portfolio';
-    protected static $columnasDB = ['id', 'brand', 'description', 'country', 'image', 'service'];
+    protected static $columnasDB = ['id', 'title', 'brand', 'description', 'country', 'service', 'image'];
 
     public $id;
+    public $title;
     public $brand;
     public $description;
     public $country;
-    public $image;
     public $service;
+    public $image;
 
     public function __construct($args = [])
     {
         $this->id = $args['id'] ?? null;
+        $this->title = $args['title'] ?? '';
         $this->brand = $args['brand'] ?? '';
         $this->description = $args['description'] ?? '';
         $this->country = $args['country'] ?? '';
-        $this->image = $args['image'] ?? '';
         $this->service = $args['service'] ?? '';
+        $this->image = $args['image'] ?? '';
     }
 
     public function validar()
     {
+        if (!$this->title) {
+            self::$errores['title'] = 'This field cannot be empty. Please provide a project name.';
+        }
         if (!$this->brand) {
             self::$errores['brand'] = 'This field cannot be empty. Please provide a brand name.';
         }
@@ -43,4 +48,6 @@ class Portfolio extends ActiveRecord
         }
         return self::$errores;
     }
+
+
 }

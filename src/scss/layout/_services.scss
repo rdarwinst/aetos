@@ -95,14 +95,6 @@
         }
     }
 
-    img {
-        width: 100dvw;
-        
 
-        @include media-breakpoint-up(md) {
-            height: 40rem;
-            object-fit: cover;
-        }
-    }
 
 }
