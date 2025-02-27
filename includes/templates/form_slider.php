@@ -34,8 +34,7 @@
         name="slider[image]"
         id="image"
         class="form-control rounded-0 fw-lighter <?php echo isset($errores['image']) ? 'is-invalid' : ''; ?>"
-        accept="image/png"
-        required>
+        accept="image/png">
     <span class="invalid-feedback"><?php echo ($errores['image']) ?? 'Please upload an image for the slide.'; ?></span>
     <div class="imageHelpBlock form-text">The input type submit expects images in PNG format.</div>
 </div>

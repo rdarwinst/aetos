@@ -18,7 +18,7 @@ function debuguear($valor)
     exit;
 }
 
-function s($html)
+function s($html): string
 {
     $s = htmlspecialchars($html);
     return $s;
@@ -28,4 +28,26 @@ function validarTipoContenido($tipo)
 {
     $tipos = ['slide', 'service', 'work', 'info'];
     return in_array($tipo, $tipos);
+}
+
+function mostrarANotificiacion($codigo)
+{
+    $mensaje = '';
+
+    switch ($codigo) {
+        case 1:
+            $mensaje = 'Created successfully';
+            break;
+        case 2:
+            $mensaje = 'Updated successfully';
+            break;
+        case 3:
+            $mensaje = 'Deleted successfully';
+            break;
+        default:
+            $mensaje = false;
+            break;
+    }
+
+    return $mensaje;
 }

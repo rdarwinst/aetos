@@ -43,7 +43,7 @@
 
 <div class="mb-3">
     <label for="image" class="form-label">Image</label>
-    <input type="file" required name="work[image]" id="image" class="form-control rounded-0 <?php echo isset($errores['image']) ? 'is-invalid' : ''; ?>" accept="image/jpeg, image/png">
+    <input type="file" name="work[image]" id="image" class="form-control rounded-0 <?php echo isset($errores['image']) ? 'is-invalid' : ''; ?>" accept="image/jpeg, image/png">
     <div class="invalid-feedback"><?php echo $errores['image'] ?? 'This field cannot be empty. Please upload an image.'; ?></div>
     <div class="imageHelpBlock form-text">Please upload an image related to the service provided.</div>
 </div>

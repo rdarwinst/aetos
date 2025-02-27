@@ -3,3 +3,4 @@ build/
 .unlighthouse
 /vendor/
 uploads/
+usuario.php

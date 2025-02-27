@@ -7,6 +7,8 @@ use App\Slider;
 
 require '../includes/app.php';
 
+$result = $_GET['result'] ?? null;
+
 $slider = Slider::all();
 $services = Services::all();
 $works = Portfolio::all();
@@ -101,8 +103,16 @@ incluirTemplate('header'); ?>
 
 <!-- Secciones administrables -->
 
+<div class="container-xl admin">
 
-<div class="container-xl">
+    <?php
+    $mensaje = mostrarANotificiacion(intval($result));
+
+    if ($mensaje) { ?>
+
+        <p class="p-3 my-3 text-bg-success fw-bold text-light text-uppercase text-center notification"><?php echo s($mensaje); ?></p>
+
+    <?php } ?>
 
     <div class="tab-content py-5" id="pills-tabContent">
 

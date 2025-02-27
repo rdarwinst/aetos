@@ -30,8 +30,7 @@
         name="service[image]"
         id="image"
         class="form-control rounded-0 <?php echo isset($errores['image']) ? 'is-invalid' : ''; ?>"
-        accept="image/jpeg, image/png"
-        required>
+        accept="image/jpeg, image/png">
     <div class="invalid-feedback"><?php echo $errores['image'] ?? 'Please upload an image of the service.'; ?></div>
     <div class="imageHelpBlock form-text">Upload an image of the service. Accepted formats: JPG, PNG.</div>
 </div>

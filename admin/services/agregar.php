@@ -15,13 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
-    
+
     if ($_FILES["service"]["tmp_name"]["image"]) {
         $manager = new ImageManager(Driver::class);
-        $img = $manager->read($_FILES["service"]["tmp_name"]["image"])->resizeDown(900, 900);
+        $img = $manager->read($_FILES["service"]["tmp_name"]["image"])->cover(720, 1200);
         $services->setImagen($nombreImagen);
     }
-    
+
     $errores = $services->validar();
 
     if (empty($errores)) {

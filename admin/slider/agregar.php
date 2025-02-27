@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($_FILES['slider']['tmp_name']['image']) {
         $manager = new ImageManager(Driver::class);
-        $img = $manager->read($_FILES['slider']['tmp_name']['image'])->resizeDown(900, 900);
+        $img = $manager->read($_FILES['slider']['tmp_name']['image'])->cover(900, 900);
         $slider->setImagen($nombreImagen);
     }
 
