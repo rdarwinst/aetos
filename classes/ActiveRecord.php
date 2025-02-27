@@ -19,6 +19,11 @@ class ActiveRecord
         return static::$errores;
     }
 
+    public static function setError($campo, $mensaje)
+    {
+        static::$errores[$campo] = $mensaje;
+    }
+
     /* Validación */
     public function validar()
     {

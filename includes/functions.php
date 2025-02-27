@@ -51,3 +51,14 @@ function mostrarANotificiacion($codigo)
 
     return $mensaje;
 }
+function estaAutenticado()
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if (!$_SESSION['login']) {
+        header('Location: /');
+        exit;
+    }
+}
