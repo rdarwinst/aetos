@@ -35,11 +35,13 @@
     </noscript>
 
     <!-- CSS Propio -->
-    <link rel="stylesheet" href="/build/css/app.min.css">
+    <link rel="preload" href="/build/css/app.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="/build/css/app.min.css">
+    </noscript>
 
     <link rel="prefetch" href="/build/js/bundle.min.js">
     <link rel="prefetch" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js">
 </head>
 
 <body data-bs-theme="dark">
-
