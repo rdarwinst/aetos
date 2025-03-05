@@ -51,15 +51,15 @@ incluirTemplate('header');
     </div>
 </div>
 
-<?php if ($resultado === 1): ?>
+<?php if ($resultado === 1) { ?>
     <script>
         alert('Our portfolio has been successfully sent to your email.');
     </script>
-<?php elseif ($resultado === 2): ?>
+<?php } elseif ($resultado === 2) { ?>
     <script>
         alert('Message has been sent');
     </script>
-<?php endif; ?>
+<?php } ?>
 
 <header class="min-vh-100 w-100 section home" id="home">
     <div class="container-xl min-vh-100 d-flex justify-content-center align-items-end">
@@ -77,35 +77,41 @@ incluirTemplate('header');
 
 <div class="py-5 min min-vh-100 aetos-icons section">
     <div class="container-xl min-vh-100">
-        <div class="d-flex flex-column justify-content-center align-items-center min-vh-100 subElement swiper">
 
-            <div class="swiper-wrapper">
-                <?php foreach ($sliders as $slide): ?>
-                    <div class="swiper-slide">
-                        <div class="row align-items-center">
-                            <div class="col-md-6">
-                                <img src="uploads/images/<?php echo s($slide->image); ?>" alt="Aetos Icon" class="img-fluid">
-                            </div>
-                            <div class="col-md-6">
-                                <div class="icon-info">
-                                    <h2 class="text-center text-md-start"><?php echo s($slide->title); ?> <span><?php //echo s($slide->represents); 
-                                                                                                                ?></span></h2>
-                                    <p class="text-center text-md-start">&nbsp;</p>
+        <div class="row align-items-center">
+
+            <div class="order-2 order-md-1 col-md-6 d-flex flex-column justify-content-center align-items-center min-vh-100 subElement swiper">
+                <div class="swiper-wrapper">
+                    <?php foreach ($sliders as $slide): ?>
+                        <div class="swiper-slide">
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <img loading="lazy" src="uploads/images/<?php echo s($slide->image); ?>" alt="Aetos Icon" class="img-fluid">
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="icon-info">
+                                        <h2 class="text-center text-md-start"><?php echo s($slide->title); ?> <span><?php //echo s($slide->represents); 
+                                                                                                                    ?></span></h2>
+                                        <p class="text-center text-md-start">&nbsp;</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+
+            <div class="order-1 order-md-2 col-md-6 d-flex flex-column align-items-center align-items-md-start mt-5 mt-md-0 complementary subElement">
+                <p>With a good</p>
+                <p>"Unique" <span>Concept,</span></p>
+                <p class="text-dark fw-bold">Your brand offers an experience that your audience wants to live.</p>
+            </div>
+
         </div>
 
-        <div class="d-flex flex-column justify-content-center align-items-center complementary">
-            <p class="text-white fw-lighter">With a good "unique" concept</p>
-            <p class="text-white fw-lighter">Your brand offers an experience that your audience wants to live.</p>
-        </div>
     </div>
 </div>
 
@@ -138,7 +144,7 @@ incluirTemplate('header');
             <div class="col-md-2 d-flex flex-column flex-md-row justify-content-between subElement">
                 <div class="text text-center text-md-start">
                     <h6 class="fw-bold fs-3">Emotional Branding</h6>
-                    <p class="fs-5">Relationships, sensorial experience, imagination and vision.</p>
+                    <p>Relationships, sensorial experience, imagination and vision.</p>
                 </div>
                 <p class="fw-bold text-primary display-1 align-self-center">+</p>
             </div>
@@ -146,7 +152,7 @@ incluirTemplate('header');
             <div class="col-md-2 d-flex flex-column flex-md-row justify-content-between subElement">
                 <div class="text text-center text-md-start">
                     <h6 class="fw-bold fs-3">Brand Positioning</h6>
-                    <p class="fs-5">Unique value strategy development.</p>
+                    <p>Unique value strategy development.</p>
                 </div>
                 <p class="fw-bold text-primary display-1 align-self-center">+</p>
             </div>
@@ -154,7 +160,7 @@ incluirTemplate('header');
             <div class="col-md-2 d-flex flex-column flex-md-row justify-content-between subElement">
                 <div class="text text-center text-md-start">
                     <h6 class="fw-bold fs-3">Sustainable Branding</h6>
-                    <p class="fs-5">Socially responsible brand value strategy development.</p>
+                    <p>Socially responsible brand value strategy development.</p>
                 </div>
                 <p class="fw-bold text-primary display-1 align-self-center">+</p>
             </div>
@@ -162,17 +168,20 @@ incluirTemplate('header');
             <div class="col-md-2 d-flex flex-column flex-md-row justify-content-between subElement">
                 <div class="text text-center text-md-start">
                     <h6 class="fw-bold fs-3">Identity and Image</h6>
-                    <p class="fs-5">Internal and external brand process management.</p>
+                    <p>Internal and external brand process management.</p>
                 </div>
                 <p class="fw-bold text-primary display-1 align-self-center">=</p>
             </div>
             <div class="col-md-2 subElement">
-                <p class="fw-bold fs-5 text-center text-md-start">Design and implement a successful brand strategy in consistency with the business values, culture and objectives.</p>
+                <p class="fw-bold text-center text-md-start">Design and implement a successful brand strategy in consistency with the business values, culture and objectives.</p>
             </div>
 
         </div>
-        <p class="text-center subElement">Design and implement a successful brand strategy in consistency with the business values, culture and objectives.</p>
-        <p class="text-center subElement">Capture Attention <span class="d-block">and</span> seduce better than your competition</p>
+
+        <div class="complementary">
+            <h5 class="subElement">Capture Attention <span class="azul block">and seduce</span></h5>
+            <h5 class="subElement"><span class="azul">better than </span>your<span class="block dark"> competition.</span></h5>
+        </div>
     </div>
 </seccion>
 
@@ -274,9 +283,6 @@ incluirTemplate('header');
             </div>
 
         </div>
-
-        <p class="text-center fw-lighter mt-5">Commitment superior positive customer uniform experience true to <span class="text-light">Brand</span> forward significant to customers standards interactions across touchpoints values thinking improvements.
-        </p>
     </div>
 </section>
 
@@ -286,7 +292,7 @@ incluirTemplate('header');
         <div class="row mx-5 justify-content-center align-items-center gap-3 my-4 order-1 order-md-2 subElement">
             <?php foreach ($services as $service): ?>
                 <div class="col-md-3 service">
-                    <img src="/uploads/images/<?php echo s($service->image); ?>" alt="<?php echo s($service->name); ?> Image" class="img-fluid">
+                    <img loading="lazy" src="/uploads/images/<?php echo s($service->image); ?>" alt="<?php echo s($service->name); ?> Image" class="img-fluid">
                     <div class="service__info">
                         <h3 class="service__title"><?php echo s($service->name); ?></h3>
                         <ul class="text-start">
@@ -435,12 +441,17 @@ incluirTemplate('header');
 <section class="py-5 min-vh-100 section contact" id="contact">
     <div class="container-xl min-vh-100">
         <div class="min-vh-100 row justify-content-around align-items-center">
-            <div class="col-md-5 subElement">
-                <p>We are open</p>
-                <h2>To Work <span>Worldwide</span></h2>
-                <p>Our mission is to build powerful brand projects; so, let us know what you have on mind.</p>
+            <div class="col-md-5 flex-grow-1 subElement d-flex flex-column justify-content-between">
+                <div>
+                    <p>We are open</p>
+                    <h2>To Work <span>Worldwide</span></h2>
+                    <p>Let us know what yout have on mind.</p>
+                </div>
+                <div>
+                    <p class="extra">We are driven by a single powerful goal: </br>to turn every project into a powerful story to live</p>
+                </div>
             </div>
-            <div class="col-md-5 subElement">
+            <div class="col-md-5 flex-grow-1 subElement">
                 <form action="contact.php" method="POST" class="w-75 mx-auto " novalidate>
                     <div class="mb-3">
                         <label for="name" class="form-label text-primary text-uppercase">Your Name</label>

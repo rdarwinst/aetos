@@ -28,6 +28,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.min.css">
     </noscript>
 
+    <link rel="preload" href="/build/img/header.avif" as="image">
+    <link rel="preload" href="/build/img/header.webp" as="image">
+    <link rel="preload" href="/build/img/header.jpg" as="image">
+
     <!-- Swiper -->
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>

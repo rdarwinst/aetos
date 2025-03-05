@@ -2,4 +2,25 @@
 
 .infographic {
     background-color: $white;
+
+    .complementary {
+        text-transform: uppercase;
+        h5 {font-weight: 700;}
+
+        .azul {
+            color: $primary;
+
+            &.block {
+                font-size: 4rem;                
+            }
+        }
+
+        .block {
+            display: block;
+            &.dark {
+                font-size: 3.8rem;                
+            }
+        }
+
+    }
 }

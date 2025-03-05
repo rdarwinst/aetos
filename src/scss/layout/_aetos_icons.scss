@@ -3,15 +3,19 @@
 .aetos-icons {
     background-color: $primary;
 
+    img {
+        aspect-ratio: 1 / 1;
+    }
+
     .icon-info {
         h2 {
             font-weight: 700;
             color: $dark;
-            font-size: 4.2rem;
+            font-size: 3.2rem;
             line-height: .7;
 
             @include media-breakpoint-up(lg) {
-                font-size: 7rem;
+                font-size: 5rem;
             }
 
             span {
@@ -47,10 +51,42 @@
 
 
     .complementary {
-        span {
-            font-weight: 700;
-            text-transform: uppercase;
-            color: $dark;
+        line-height: 1;
+        p {
+            &:nth-child(1) {
+                text-align: start;
+                font-weight: 700;
+                letter-spacing: 4px;
+                color: $dark;
+                font-size: 2.2rem;
+            }
+
+            &:nth-child(2) {
+                color: $light;
+                font-size: 7rem;
+                text-transform: uppercase;
+                font-weight: 700;
+                font-family: $headings-font-family;
+
+                span {
+                    display: block;
+                    color: $dark;
+                }
+
+                @include media-breakpoint-up(md) {
+                    font-size: 11rem;
+                }
+            }
+
+            &:nth-child(3) {
+                margin-top: 1rem;
+                font-size: 2.2rem;
+                width: 72dvw;
+
+                @include media-breakpoint-up(md) {
+                    width: 35dvw;
+                }
+            }
         }
     }
 }

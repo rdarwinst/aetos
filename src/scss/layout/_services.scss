@@ -61,6 +61,10 @@
     .service {
         position: relative;
 
+        img {
+            aspect-ratio: 4 / 7;
+        }
+
         &__info {
             background-color: transparentize($primary, .5%);
             position: absolute;

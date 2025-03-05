@@ -19,17 +19,17 @@
     }
 
     p {
-        color: $white; 
-        font-weight: 300; 
-        font-size: 2rem;    
-        
+        color: $white;
+        font-weight: 300;
+        font-size: 2rem;
+
         @include media-breakpoint-up(lg) {
             font-size: 2.5rem;
         }
 
-        &:nth-child(1){
+        &:nth-child(1) {
             font-size: 1.6rem;
-            text-transform: uppercase;        
+            text-transform: uppercase;
         }
 
     }
@@ -41,7 +41,7 @@
         line-height: .75;
 
         @include media-breakpoint-up(lg) {
-            font-size: 9rem;            
+            font-size: 9rem;
         }
 
         span {
@@ -49,11 +49,24 @@
             color: $white;
 
             @include media-breakpoint-up(lg) {
-                font-size: 10rem;     
-                margin-left: 8rem;       
+                font-size: 10rem;
+                margin-left: 8rem;
             }
         }
     }
-    
+
+    p {
+        &.extra {
+            font-size: 2.5rem;
+            text-transform: none;
+            width: 75dvw;
+            margin-inline: auto;
+
+            @include media-breakpoint-up(md) {
+                margin-top: 20rem;
+                width: auto;
+            }
+        }
+    }
 
 }
