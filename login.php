@@ -3,9 +3,11 @@
 use App\Usuario;
 
 require 'includes/app.php';
-incluirTemplate('header');
 
 $errores = Usuario::getErrores();
+
+$result = $_GET['success'] ?? null;
+$result = filter_var($result, FILTER_VALIDATE_INT);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
@@ -38,15 +40,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errores = Usuario::getErrores();
 }
 
+incluirTemplate('header');
+
 ?>
 
 <main class="py-5 min-vh-100 login">
 
-    <div class="container-xl min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="container-xl min-vh-100 d-flex flex-column align-items-center justify-content-center">
+
+        <?php if ($result === 1): ?>
+            <p class="text-bg-success fw-bold text-center text-uppercase" style="padding: 1rem 2rem;">We have sent the instructions to your email. Please check it.</p>
+
+        <?php elseif ($result === 2): ?>
+            <p class="text-bg-success fw-bold text-center text-uppercase" style="padding: 1rem 2rem;">Password reset successfully.</p>
+        <?php endif; ?>
 
         <div class="row login-form">
             <div class="col-4 w-100 mx-auto bg-dark d-flex flex-column py-3 px-5">
-
                 <a href="/" class="text-center"><img src="/build/img/logo-azul.svg" alt="Logo Aetos" class="img-fluid logo w-50 align-self-center"></a>
 
                 <form method="post" class="my-5 needs-validation" data-bs-theme="dark" novalidate>
@@ -76,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
 
                     <div class="my-3 d-flex justify-content-end">
-                        <a href="#" class="link-primary text-decoration-none">¿Forgot Password?</a>
+                        <a href="recovery_password.php" class="link-primary text-decoration-none">¿Forgot Password?</a>
                     </div>
 
                     <div class="d-grid">

@@ -29,20 +29,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $errores = $slider->validar();
 
     $nombreImagen = md5(uniqid(rand(), true)) . ".png";
-    
+
     if ($_FILES["slider"]["tmp_name"]["image"]) {
         $manager = new ImageManager(Driver::class);
         $img = $manager->read($_FILES["slider"]["tmp_name"]["image"])->cover(900, 900);
         $slider->setImagen($nombreImagen);
     }
-    
-    
+
+
     if (empty($errores)) {
         if ($_FILES["slider"]["tmp_name"]["image"]) {
             $img->save(IMAGES_URL . $nombreImagen);
         }
 
-        $slider->guardar();
+        $resultado = $slider->guardar();
+
+        if ($resultado) {
+            header('Location: /admin?result=2');
+        }
     }
 }
 

@@ -35,7 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $img->save(IMAGES_URL . $nombreImagen);
 
-        $work->guardar();
+        $resultado = $work->guardar();
+
+        if ($resultado) {
+            header('Location: /admin?result=1');
+        }
     }
 }
 
@@ -51,7 +55,7 @@ incluirTemplate('headerAdmin'); ?>
     <div class="my-3 row">
         <div class="col-md-6 mx-auto">
             <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
-                
+
                 <?php include '../../includes/templates/form_works.php'; ?>
 
                 <div class="mb-3 d-grid d-md-flex">

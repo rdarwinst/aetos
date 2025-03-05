@@ -9,6 +9,10 @@ require './includes/app.php';
 $sliders = Slider::all();
 $services = Services::all();
 
+$resultado = $_GET['success'] ?? null;
+$resultado = filter_var($resultado, FILTER_VALIDATE_INT);
+
+
 incluirTemplate('header');
 ?>
 
@@ -47,6 +51,16 @@ incluirTemplate('header');
     </div>
 </div>
 
+<?php if ($resultado === 1): ?>
+    <script>
+        alert('Our portfolio has been successfully sent to your email.');
+    </script>
+<?php elseif ($resultado === 2): ?>
+    <script>
+        alert('Message has been sent');
+    </script>
+<?php endif; ?>
+
 <header class="min-vh-100 w-100 section home" id="home">
     <div class="container-xl min-vh-100 d-flex justify-content-center align-items-end">
         <div class="headers">
@@ -64,10 +78,7 @@ incluirTemplate('header');
 <div class="py-5 min min-vh-100 aetos-icons section">
     <div class="container-xl min-vh-100">
         <div class="d-flex flex-column justify-content-center align-items-center min-vh-100 subElement swiper">
-            <div class="d-flex flex-column justify-content-center align-items-center complementary">
-                <p class="text-white fw-lighter">What we truly are:</p>
-                <p class="text-white fw-lighter">Strategic ally to build <span>Powerful Brands</span> that improve the world</p>
-            </div>
+
             <div class="swiper-wrapper">
                 <?php foreach ($sliders as $slide): ?>
                     <div class="swiper-slide">
@@ -77,7 +88,8 @@ incluirTemplate('header');
                             </div>
                             <div class="col-md-6">
                                 <div class="icon-info">
-                                    <h2 class="text-center text-md-start"><?php echo s($slide->title); ?> <span><?php echo s($slide->represents); ?></span></h2>
+                                    <h2 class="text-center text-md-start"><?php echo s($slide->title); ?> <span><?php //echo s($slide->represents); 
+                                                                                                                ?></span></h2>
                                     <p class="text-center text-md-start">&nbsp;</p>
                                 </div>
                             </div>
@@ -88,6 +100,11 @@ incluirTemplate('header');
             <div class="swiper-pagination"></div>
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
+        </div>
+
+        <div class="d-flex flex-column justify-content-center align-items-center complementary">
+            <p class="text-white fw-lighter">With a good "unique" concept</p>
+            <p class="text-white fw-lighter">Your brand offers an experience that your audience wants to live.</p>
         </div>
     </div>
 </div>
@@ -107,6 +124,159 @@ incluirTemplate('header');
                 </p>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- Seccion Infografía -->
+<seccion class="py-5 min-vh-100 section infographic">
+    <div class="py-5 container-xl min-vh-100 d-flex flex-column justify-content-around align-items-center">
+        <div class="encabezados">
+            <h2 class="text-primary text-center fw-bold display-1 subElement">What Mark Us</h2>
+            <h3 class="text-dark text-center fw-bold fs-2 subElement">Our 4 Method Pillars</h3>
+        </div>
+        <div class="row my-5 justify-content-center">
+            <div class="col-md-2 d-flex flex-column flex-md-row justify-content-between subElement">
+                <div class="text text-center text-md-start">
+                    <h6 class="fw-bold fs-3">Emotional Branding</h6>
+                    <p class="fs-5">Relationships, sensorial experience, imagination and vision.</p>
+                </div>
+                <p class="fw-bold text-primary display-1 align-self-center">+</p>
+            </div>
+
+            <div class="col-md-2 d-flex flex-column flex-md-row justify-content-between subElement">
+                <div class="text text-center text-md-start">
+                    <h6 class="fw-bold fs-3">Brand Positioning</h6>
+                    <p class="fs-5">Unique value strategy development.</p>
+                </div>
+                <p class="fw-bold text-primary display-1 align-self-center">+</p>
+            </div>
+
+            <div class="col-md-2 d-flex flex-column flex-md-row justify-content-between subElement">
+                <div class="text text-center text-md-start">
+                    <h6 class="fw-bold fs-3">Sustainable Branding</h6>
+                    <p class="fs-5">Socially responsible brand value strategy development.</p>
+                </div>
+                <p class="fw-bold text-primary display-1 align-self-center">+</p>
+            </div>
+
+            <div class="col-md-2 d-flex flex-column flex-md-row justify-content-between subElement">
+                <div class="text text-center text-md-start">
+                    <h6 class="fw-bold fs-3">Identity and Image</h6>
+                    <p class="fs-5">Internal and external brand process management.</p>
+                </div>
+                <p class="fw-bold text-primary display-1 align-self-center">=</p>
+            </div>
+            <div class="col-md-2 subElement">
+                <p class="fw-bold fs-5 text-center text-md-start">Design and implement a successful brand strategy in consistency with the business values, culture and objectives.</p>
+            </div>
+
+        </div>
+        <p class="text-center subElement">Design and implement a successful brand strategy in consistency with the business values, culture and objectives.</p>
+        <p class="text-center subElement">Capture Attention <span class="d-block">and</span> seduce better than your competition</p>
+    </div>
+</seccion>
+
+<section class="py-5 min-vh-100 section journey-map">
+    <div class="py-5 container-xl min-vh-100 d-flex flex-column align-items-center justify-content-between">
+        <div class="d-flex flex-column align-items-center justify-content-center subElement">
+            <p class="text-uppercase fw-bold text-light text-center fs-5 subElement">Brand Journey Map</p>
+            <img src="/build/img/logotipo-aetos.svg" alt="Logo tipo Aëtos" class="img-fluid" width="250" style="margin-top: -2.5rem;">
+        </div>
+
+        <div class="grid mt-5 journey-map-aetos subElement w-100" style="--bs-columns: 8">
+
+            <div class="g-col-md-1 journey-step subElement">
+                <div class="rounded-circle border border-5 border-light d-flex align-items-center justify-content-center mb-3">
+                    <img src="/build/img/icono.svg" alt="Icono Aetos" width="120" height="120">
+                </div>
+                <div class="textos">
+                    <h5 class="text-uppercase fw-bold text-light text-center mb-3">Partner</h5>
+                    <p class="text-uppercase fw-bold text-dark text-center mb-3">Building Trust</p>
+                    <p class="fw-lighter text-center"><span class="text-light">Powerful</span> market stories.</p>
+                </div>
+            </div>
+
+            <div class="g-col-md-1 journey-step subElement">
+                <div class="rounded-circle border border-5 border-dark d-flex align-items-center justify-content-center mb-3">
+                    <img src="/build/img/2.svg" alt="Icono Casco" width="120" height="120">
+                </div>
+                <div class="textos">
+                    <h5 class="text-uppercase fw-bold text-light text-center mb-3">Client</h5>
+                    <p class="text-uppercase fw-bold text-dark text-center mb-3">Integrity</p>
+                    <p class="fw-lighter text-center">Commitment to customers.</p>
+                </div>
+            </div>
+
+            <div class="g-col-md-1 journey-step subElement">
+                <div class="rounded-circle border border-5 border-light d-flex align-items-center justify-content-center mb-3">
+                    <img src="/build/img/martillo.svg" alt="Icono Martillo" width="120" height="120">
+                </div>
+                <div class="textos">
+                    <h5 class="text-uppercase fw-bold text-light text-center mb-3">Develop</h5>
+                    <p class="text-uppercase fw-bold text-dark text-center mb-3">Unique Concept</p>
+                    <p class="fw-lighter text-center">Superior Standards</p>
+                </div>
+            </div>
+
+            <div class="g-col-md-1 journey-step subElement">
+                <div class="rounded-circle border border-5 border-dark d-flex align-items-center justify-content-center mb-3">
+                    <img src="/build/img/poseidon.svg" alt="Icono Tridente" width="120" height="120">
+                </div>
+                <div class="textos">
+                    <h5 class="text-uppercase fw-bold text-light text-center mb-3">Connect</h5>
+                    <p class="text-uppercase fw-bold text-dark text-center mb-3">Practical Value</p>
+                    <p class="fw-lighter text-center">Positive customer interactions.</p>
+                </div>
+            </div>
+
+            <div class="g-col-md-1 journey-step subElement">
+                <div class="rounded-circle border border-5 border-light d-flex align-items-center justify-content-center mb-3">
+                    <img src="/build/img/5.svg" alt="Icono Bidente" width="120" height="120">
+                </div>
+                <div class="textos">
+                    <h5 class="text-uppercase fw-bold text-light text-center mb-3">Grow</h5>
+                    <p class="text-uppercase fw-bold text-dark text-center mb-3">Long-term Consistency</p>
+                    <p class="fw-lighter text-center">Uniform experience across touchpoints.</p>
+                </div>
+            </div>
+
+            <div class="g-col-md-1 journey-step subElement">
+                <div class="rounded-circle border border-5 border-dark d-flex align-items-center justify-content-center mb-3">
+                    <img src="/build/img/zeus.svg" alt="Icono Tridente" width="120" height="120">
+                </div>
+                <div class="textos">
+                    <h5 class="text-uppercase fw-bold text-light text-center mb-3">Consolidate</h5>
+                    <p class="text-uppercase fw-bold text-dark text-center mb-3">Authenticity</p>
+                    <p class="fw-lighter text-center">True to values.</p>
+                </div>
+            </div>
+
+            <div class="g-col-md-1 journey-step subElement">
+                <div class="rounded-circle border border-5 border-light d-flex align-items-center justify-content-center mb-3">
+                    <img src="/build/img/escudo.svg" alt="Icono Escudo" width="120" height="120">
+                </div>
+                <div class="textos">
+                    <h5 class="text-uppercase fw-bold text-light text-center mb-3">Lead</h5>
+                    <p class="text-uppercase fw-bold text-dark text-center mb-3">Innovation</p>
+                    <p class="fw-lighter text-center"><span class="text-light">Brand</span> forward thinking.</p>
+                </div>
+            </div>
+
+            <div class="g-col-md-1 journey-step subElement">
+                <div class="rounded-circle border border-5 border-dark d-flex align-items-center justify-content-center mb-3">
+                    <img src="/build/img/4.svg" alt="Icono Espada" width="120" height="120">
+                </div>
+                <div class="textos">
+                    <h5 class="text-uppercase fw-bold text-light text-center mb-3">Evaluate</h5>
+                    <p class="text-uppercase fw-bold text-dark text-center mb-3">Evolution</p>
+                    <p class="fw-lighter text-center">Significant improvents.</p>
+                </div>
+            </div>
+
+        </div>
+
+        <p class="text-center fw-lighter mt-5">Commitment superior positive customer uniform experience true to <span class="text-light">Brand</span> forward significant to customers standards interactions across touchpoints values thinking improvements.
+        </p>
     </div>
 </section>
 
@@ -144,7 +314,7 @@ incluirTemplate('header');
                 <h2 class="fw-bold">Build Your <span>Legacy</span></h2>
                 <p class="complementary">See how we allied with visionary teams to build brands that stand out and connected with their target audiences.</p>
                 <div class="d-grid d-md-flex btn-container" style="margin-top: 5rem;">
-                    <button type="button" class="btn btn-primary btn-lg rounded-0 fs-6 fw-bold text-uppercase" data-bs-toggle="modal" data-bs-target="#modalPortfolio">View Portfolio <i class="bi bi-eye-fill"></i></button>
+                    <button type="button" class="btn btn-dark btn-lg rounded-0 fs-6 fw-bold text-uppercase" data-bs-toggle="modal" data-bs-target="#modalPortfolio">View Portfolio <i class="bi bi-eye-fill"></i></button>
                 </div>
             </div>
 
@@ -262,81 +432,6 @@ incluirTemplate('header');
     </div>
 </section>
 
-<section class="py-5 min-vh-100 section team" id="team">
-    <div class="container-xl min-vh-100">
-        <p class="team-text mb-0 p-0 subElement">"We are passionate about taking your brand to the next level. Together, <span>we turn ideas into exceptional results."</span></p>
-        <div class="row flex-md-column">
-            <div class="col-6 col-md-12">
-                <div class="row mt-3 mb-5 justify-content-center">
-                    <div class="col-md-3 mb-3 m-md-0 subElement">
-                        <div class="card" data-bs-theme="light">
-                            <picture>
-                                <source srcset="/build/img/equipo-1.avif" type="image/avif">
-                                <source srcset="/build/img/equipo-1.webp" type="image/webp">
-                                <source srcset="/build/img/equipo-1.jpg" type="image/jpeg">
-                                <img loading="lazy" width="120" height="300" src="/build/img/equipo-1.jpg" alt="People" class="card-img-top object-fit-cover">
-                            </picture>
-                            <div class="card-body">
-                                <p class="card-text">Erlich Bacman</p>
-                                <p class="card-text">Marketing</p>
-                                <div class="d-flex gap-3">
-                                    <a href="#" class="link-dark" aria-label="instagram-link"><i class="bi bi-instagram"></i></a>
-                                    <a href="#" class="link-dark" aria-label="tiktok-link"><i class="bi bi-tiktok"></i></a>
-                                    <a href="#" class="link-dark" aria-label="facebook-link"><i class="bi bi-facebook"></i></a>
-                                    <a href="#" class="link-dark" aria-label="whatsapp-link"><i class="bi bi-whatsapp"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3 m-md-0 subElement">
-                        <div class="card" data-bs-theme="light">
-                            <picture>
-                                <source srcset="/build/img/equipo-2.avif" type="image/avif">
-                                <source srcset="/build/img/equipo-2.webp" type="image/webp">
-                                <source srcset="/build/img/equipo-2.jpg" type="image/jpeg">
-                                <img loading="lazy" width="120" height="300" src="/build/img/equipo-2.jpg" alt="People" class="card-img-top object-fit-cover">
-                            </picture>
-                            <div class="card-body">
-                                <p class="card-text">Laurie Bream</p>
-                                <p class="card-text">UX / UI Designer</p>
-                                <div class="d-flex gap-3">
-                                    <a href="#" class="link-dark" aria-label="instagram-link"><i class="bi bi-instagram"></i></a>
-                                    <a href="#" class="link-dark" aria-label="tiktok-link"><i class="bi bi-tiktok"></i></a>
-                                    <a href="#" class="link-dark" aria-label="facebook-link"><i class="bi bi-facebook"></i></a>
-                                    <a href="#" class="link-dark" aria-label="whatsapp-link"><i class="bi bi-whatsapp"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 mb-3 m-md-0 subElement">
-                        <div class="card" data-bs-theme="light">
-                            <picture>
-                                <source srcset="/build/img/equipo-3.avif" type="image/avif">
-                                <source srcset="/build/img/equipo-3.webp" type="image/webp">
-                                <source srcset="/build/img/equipo-3.jpg" type="image/jpeg">
-                                <img loading="lazy" width="120" height="300" src="/build/img/equipo-3.jpg" alt="People" class="card-img-top object-fit-cover">
-                            </picture>
-                            <div class="card-body">
-                                <p class="card-text">Monical Hall</p>
-                                <p class="card-text">Software Dev</p>
-                                <div class="d-flex gap-3">
-                                    <a href="#" class="link-dark" aria-label="instagram-link"><i class="bi bi-instagram"></i></a>
-                                    <a href="#" class="link-dark" aria-label="tiktok-link"><i class="bi bi-tiktok"></i></a>
-                                    <a href="#" class="link-dark" aria-label="facebook-link"><i class="bi bi-facebook"></i></a>
-                                    <a href="#" class="link-dark" aria-label="whatsapp-link"><i class="bi bi-whatsapp"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-12 align-self-center subElement">
-                <h2>Create,<span>Innovate</span></h2>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section class="py-5 min-vh-100 section contact" id="contact">
     <div class="container-xl min-vh-100">
         <div class="min-vh-100 row justify-content-around align-items-center">
@@ -346,7 +441,7 @@ incluirTemplate('header');
                 <p>Our mission is to build powerful brand projects; so, let us know what you have on mind.</p>
             </div>
             <div class="col-md-5 subElement">
-                <form class="w-75 mx-auto needs-validation" novalidate>
+                <form action="contact.php" method="POST" class="w-75 mx-auto " novalidate>
                     <div class="mb-3">
                         <label for="name" class="form-label text-primary text-uppercase">Your Name</label>
                         <input type="text" name="name" id="name" class="form-control rounded-0 bg-transparent border-0 border-bottom border-primary text-white fw-lighter" required>
@@ -386,13 +481,13 @@ incluirTemplate('header');
 
 <footer class="py-5 footer section">
     <div class="container-xl">
-        <div class="row align-items-center justify-content-center">
+        <div class="row align-items-center justify-content-between">
             <div class="col-6 subElement">
                 <h2>Powerful <span>Brands</span></h2>
             </div>
             <div class="col-6 subElement">
-                <div class="row">
-                    <div class="col-12 col-md-6 p-0 mb-5">
+                <div class="row justify-content-between">
+                    <div class="col-12 col-md-4 p-0 mb-5">
                         <h3 class="fw-bold mb-3">Miami, US</h3>
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -411,14 +506,17 @@ incluirTemplate('header');
                             </li>
                         </ul>
                     </div>
-                    <div class="col-12 col-md-6 p-0">
-                        <h3 class="fw-bold mb-3">Site</h3>
-                        <ul class="nav flex-column">
+                    <div class="col-12 col-md-4 p-0 mb-5">
+                        <h3 class="fw-bold mb-3 text-md-center">Site</h3>
+                        <ul class="nav flex-column align-items-md-center">
                             <li class="nav-item"><a href="#about" class="nav-link m-0 p-0 p-1 link-dark">About</a></li>
                             <li class="nav-item"><a href="#services" class="nav-link m-0 p-0 p-1 link-dark">Services</a></li>
                             <li class="nav-item"><a href="#portfolio" class="nav-link m-0 p-0 p-1 link-dark">Works</a></li>
                             <li class="nav-item"><a href="#contact" class="nav-link m-0 p-0 p-1 link-dark">Contact</a></li>
                         </ul>
+                    </div>
+                    <div class="col-12 col-md-4 p-2 p-md-0">
+                        <img src="/build/img/escudo simbolo.svg" alt="Escudo" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -451,7 +549,7 @@ incluirTemplate('header');
                 <p class="text-center fw-lighter">Fill out the form to receive my latest work via email. Let's connect and create!</p>
             </div>
             <div class="modal-body">
-                <form class="w-75 mx-auto">
+                <form method="post" action="portfolio.php" class="w-75 mx-auto">
                     <div class="mb-3">
                         <label for="name" class="form-label text-uppercase fs-6">Your Name</label>
                         <input type="text" name="name" id="name" class="form-control bg-primary border border-0 rounded-0 border-bottom border-dark fs-6 fw-lighter">
@@ -465,7 +563,7 @@ incluirTemplate('header');
                         <input type="tel" name="phone" id="phone" class="form-control bg-primary border border-0 rounded-0 border-bottom border-dark fs-6 fw-lighter">
                     </div>
                     <div class="mt-4 pb-5 d-grid d-md-flex gap-3">
-                        <button type="button" class="btn btn-portfolio rounded-0 text-uppercase fw-bold fs-5">Send <i class="bi bi-lightning-charge-fill"></i></button>
+                        <button type="submit" class="btn btn-portfolio rounded-0 text-uppercase fw-bold fs-5">Send <i class="bi bi-lightning-charge-fill"></i></button>
                         <button type="button" class="btn btn-outline-danger rounded-0 text-uppercase fw-bold fs-5" data-bs-dismiss="modal">Close <i class="bi bi-x-octagon-fill"></i></button>
                     </div>
                 </form>

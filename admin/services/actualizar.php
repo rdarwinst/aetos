@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($_FILES["service"]["tmp_name"]["image"]) {
         $manager = new ImageManager(Driver::class);
-        $img = $manager->read($_FILES["service"]["tmp_name"]["image"])->cover(720, 1200);
+        $img = $manager->read($_FILES["service"]["tmp_name"]["image"])->cover(800, 1400);
         $services->setImagen($nombreImagen);
     }
 
@@ -39,7 +39,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($_FILES["service"]["tmp_name"]["image"]) {
             $img->save(IMAGES_URL . $nombreImagen);
         }
-        $services->guardar();
+
+        $resultado = $services->guardar();
+
+        if ($resultado) {
+            header('Location: /admin?result=2');
+        }
     }
 }
 

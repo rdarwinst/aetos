@@ -33,7 +33,7 @@
 
             h1 {
                 font-size: 5rem;
-                text-shadow: 7px 7px 1px transparentize($dark, .82%);
+                text-shadow: 7px 7px 7px transparentize($dark, .82%);
 
                 @include media-breakpoint-up(lg) {
                     font-size: 12rem;

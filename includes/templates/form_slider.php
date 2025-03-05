@@ -13,20 +13,6 @@
     <div class="titleHelpBlock form-text">The title should be a single word.</div>
 </div>
 <div class="mb-3">
-    <label for="represents" class="form-label">What does the image represent?</label>
-
-    <input
-        type="text"
-        name="slider[represents]"
-        id="represents"
-        value="<?php echo s($slider->represents); ?>"
-        placeholder="Ex. Wealth"
-        class="form-control rounded-0 fw-lighter <?php echo isset($errores['represents']) ? 'is-invalid' : ''; ?>"
-        required>
-    <div class="invalid-feedback"><?php echo $errores['represents'] ?? 'Please explain what the image represents.'; ?></div>
-    <div class="representsHelpBlock form-text">The represents should also be a single word.</div>
-</div>
-<div class="mb-3">
     <label for="image" class="form-label">Icon</label>
 
     <input

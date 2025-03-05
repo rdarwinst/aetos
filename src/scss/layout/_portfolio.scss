@@ -1,17 +1,17 @@
 @use '../custom' as *;
 
 .no-webp .portfolio {
-    background-image: url(../img/tex-6.jpg);
+    background-image: url(../img/tex-5.jpg);
 }
 
 .webp .portfolio {
-    background-image: url(../img/tex-6.webp);
+    background-image: url(../img/tex-5.webp);
 }
 
 .portfolio {
-    background-color: $negro;
+    background-color: $primary;
     background-size: cover;
-    background-blend-mode: lighten;
+    background-blend-mode: hard-light;
 
     // .image-grid {
     //     display: flex;

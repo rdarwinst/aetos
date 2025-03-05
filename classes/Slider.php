@@ -30,9 +30,6 @@ class Slider extends ActiveRecord
         if (!$this->title) {
             self::$errores['title'] = 'Title is required for the slide.';
         }
-        if (!$this->represents) {
-            self::$errores['represents'] = 'Please describe the meaning of the image for the slide.';
-        }
         if (!$this->image) {
             self::$errores['image'] = 'Image is required. Please upload an image for the slide.';
         }

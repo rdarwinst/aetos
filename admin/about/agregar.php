@@ -12,10 +12,27 @@ $errores = About::getErrores();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $about = new About($_POST['about']);
 
+    $pdfName = bin2hex(random_bytes(16)) . ".pdf";
+
+    if ($_FILES["about"]["tmp_name"]["file"]) {
+        $about->setFile($pdfName);
+    }
+
     $errores = $about->validar();
 
     if (empty($errores)) {
-        $about->guardar();
+
+        if (!is_dir(PORTFOLIO_URL)) {
+            mkdir(PORTFOLIO_URL, 0755, true);
+        }
+
+        move_uploaded_file($_FILES["about"]["tmp_name"]["file"], PORTFOLIO_URL . $pdfName);
+
+        $resultado = $about->guardar();
+
+        if ($resultado) {
+            header('Location: /admin?result=1');
+        }
     }
 }
 
@@ -31,8 +48,8 @@ incluirTemplate('headerAdmin'); ?>
 
     <div class="my-3 row">
         <div class="col-md-6 mx-auto">
-            <form method="post" class="needs-validation" novalidate>
-                
+            <form method="post" class="needs-validation" novalidate enctype="multipart/form-data">
+
                 <?php include '../../includes/templates/form_aetos.php'; ?>
 
                 <div class="mb-3 d-grid d-md-flex">

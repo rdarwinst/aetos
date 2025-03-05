@@ -40,9 +40,9 @@ class ActiveRecord
     public function guardar()
     {
         if (!is_null($this->id)) {
-            $this->actualizar();
+            return $this->actualizar();
         } else {
-            $this->crear();
+            return $this->crear();
         }
     }
 
@@ -110,11 +110,10 @@ class ActiveRecord
         $query .= join("', '", array_values($atributos));
         $query .= "');";
 
-        $resultado = self::$db->query($query);
+        $resultado = self::$db->query($query);  
+        
+        return $resultado;
 
-        if ($resultado) {
-            header('Location: /admin?result=1');
-        }
     }
 
     public function atributos()
@@ -154,10 +153,9 @@ class ActiveRecord
         $query .= " LIMIT 1; ";
 
         $resultado = self::$db->query($query);
+        
+        return $resultado;
 
-        if ($resultado) {
-            header('Location: /admin?result=2');
-        }
     }
 
     public function sincronizar($args = [])

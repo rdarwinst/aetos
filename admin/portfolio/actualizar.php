@@ -42,7 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($_FILES["work"]["tmp_name"]["image"]) {
             $img->save(IMAGES_URL . $nombreImagen);
         }
-        $work->guardar();
+        $resultado = $work->guardar();
+
+        if ($resultado) {
+            header('Location: /admin?result=2');
+        }
     }
 }
 

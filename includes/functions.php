@@ -1,6 +1,7 @@
 <?php
 
-define("IMAGES_URL",  __DIR__ . "../../uploads/images/");
+define("IMAGES_URL",  __DIR__ . "/../uploads/images/");
+define("PORTFOLIO_URL", __DIR__ . "/../uploads/portfolio/");
 define("FUNCTIONS_URL", __DIR__ . "functions.php");
 define("TEMPLATES_URL", __DIR__ . "/templates");
 
@@ -57,7 +58,7 @@ function estaAutenticado()
         session_start();
     }
 
-    if (!$_SESSION['login']) {
+    if (!isset($_SESSION['login']) || $_SESSION['login'] !== true) {
         header('Location: /');
         exit;
     }

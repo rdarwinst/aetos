@@ -24,3 +24,8 @@
     <div class="invalid-feedback"><?php echo $errores['content'] ?? 'The content cannot be empty. Please provide text for this section.'; ?></div>
     <div class="contentHelpBlock form-text">Please enter the text for this section. This will provide the main information.</div>
 </div>
+
+<div class="mb-3">
+    <label for="file" class="form-label">Porfolio</label>
+    <input type="file" name="about[file]" id="about" accept="application/pdf" class="form-control rounded-0">
+</div>

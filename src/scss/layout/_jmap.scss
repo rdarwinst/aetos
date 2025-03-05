@@ -1,0 +1,65 @@
+@use '../custom' as *;
+
+.no-webp .journey-map {
+    background-image: url(../img/tex-4.jpg);
+}
+
+.webp .journey-map {
+    background-image: url(../img/tex-4.webp);
+}
+
+.journey-map {
+    background-color: $primary;
+    background-size: cover;
+    background-blend-mode: hard-light;
+
+    &-aetos {
+        @include media-breakpoint-down(md) {
+            overflow-x: scroll;
+            scrollbar-width: thin;
+        }
+    }
+
+}
+
+.journey-step {
+    position: relative;
+
+    .rounded-circle {
+        height: 15rem;
+        width: 15rem;
+        padding: 1rem 1rem 1rem 1rem;
+    }
+
+    &::after {
+        content: '';
+        display: block;
+        left: 50%;
+        position: absolute;
+        top: 14.7rem;
+        transform: translateX(-50%);
+        width: .5rem;
+    }
+
+    &:nth-child(even) {
+        &::after {
+            height: 13rem;
+            background-color: $dark;
+        }
+
+        .textos {
+            margin-top: 13rem;
+        }
+    }
+    &:nth-child(odd) {
+        &::after {
+            height: 7.5rem;
+            background-color: $light;
+        }
+
+        .textos {
+            margin-top: 7.5rem;
+        }
+    }
+
+}

@@ -34,7 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $img->save(IMAGES_URL . $nombreImagen);
 
-        $slider->guardar();
+        $resultado = $slider->guardar();
+
+        if ($resultado) {
+            debuguear($resultado);
+        }
     }
 }
 
