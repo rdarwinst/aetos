@@ -57,12 +57,13 @@
 
     p {
         &.extra {
-            font-size: 2.5rem;
+            font-size: 2rem;
             text-transform: none;
             width: 75dvw;
             margin-inline: auto;
 
             @include media-breakpoint-up(md) {
+                font-size: 2.5rem;
                 margin-top: 20rem;
                 width: auto;
             }

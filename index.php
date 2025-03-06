@@ -186,7 +186,7 @@ incluirTemplate('header');
 </seccion>
 
 <section class="py-5 min-vh-100 section journey-map">
-    <div class="py-5 container-xl min-vh-100 d-flex flex-column align-items-center justify-content-between">
+    <div class="py-5 container-xl min-vh-100 d-flex flex-column align-items-center justify-content-center">
         <div class="d-flex flex-column align-items-center justify-content-center subElement">
             <p class="text-uppercase fw-bold text-light text-center fs-5 subElement">Brand Journey Map</p>
             <img src="/build/img/logotipo-aetos.svg" alt="Logo tipo Aëtos" class="img-fluid" width="250" style="margin-top: -2.5rem;">
